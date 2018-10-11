@@ -3,17 +3,16 @@ package Model;
 import java.util.concurrent.Semaphore;
 
 public class Producer {
-    Storage storage;
-    Semaphore semaME;
-    Semaphore semaPr;
-    Semaphore semaAss;
-    int time;
+    private Storage storage;
+    private Semaphore semaMutex, semaProd, semaAss;
+    private int time, tracker;
 
-    public Producer(Storage storage, Semaphore semaME, Semaphore semaPr, Semaphore semaAss, int time) {
+    public Producer(Storage storage, Semaphore semaMutex, Semaphore semaProd, Semaphore semaAss, int time, int tracker) {
         this.storage = storage;
-        this.semaME = semaME;
-        this.semaPr = semaPr;
+        this.semaMutex = semaMutex;
+        this.semaProd = semaProd;
         this.semaAss = semaAss;
         this.time = time;
+        this.tracker = tracker;
     }
 }

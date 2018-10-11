@@ -4,11 +4,8 @@ import java.util.concurrent.Semaphore;
 
 public class Timer {
     private int daysLeft, time;
-    private Semaphore mutExc;
-
-    public Timer(Semaphore mutExc) {
-        this.mutExc = mutExc;
-    }
+    private Semaphore mutex;
+    private boolean awake;
 
     public int getDaysLeft() {
         return daysLeft;
