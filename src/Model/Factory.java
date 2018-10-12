@@ -18,7 +18,7 @@ public class Factory {
     // Assembler's array
     private Assembler[] assemblers;
     // Semaphores
-    private Semaphore semS, semB, semC, mutexS, mutexB, mutexC, mutexA, assS, assB, assC, timerManager;
+    private Semaphore prodS, prodB, prodC, mutexS, mutexB, mutexC, mutexA, assS, assB, assC, timerManager;
     // Buffer pointers (Critical section)
     private int nextPosPS, nextPosPB, nextPosPC, nextPosAS, nextPosAB, nextPosAC;
     
