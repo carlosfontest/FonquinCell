@@ -62,17 +62,17 @@ public class Factory {
         this.cablesProd = new Producer[cablesMaxProd];
         // Initializing producers
         for (int i = 0; i < batteriesInitProd; i++) {
-            this.batteriesProd[i] = this.newBatteriesProd();
+            this.batteriesProd[i] = this.hireBatteriesProd();
         }
         for (int i = 0; i < screensInitProd; i++) {
-            this.screensProd[i] = this.newScreensProd();
+            this.screensProd[i] = this.hireScreensProd();
         }
         for (int i = 0; i < cablesInitProd; i++) {
-            this.cablesProd[i] = this.newCablesProd();
+            this.cablesProd[i] = this.hireCablesProd();
         }
         // Initializing assemblers
         for (int i = 0; i < initAss; i++) {
-            this.assemblers[i] = this.newAssembler();
+            this.assemblers[i] = this.hireAssembler();
         }
     }
     
@@ -86,20 +86,60 @@ public class Factory {
         return dayTime;
     }
     
-    public Producer newBatteriesProd(){
+    public Producer hireBatteriesProd(){
         this.batteriesCount++;
         return new Producer(this.batteries,this.mutexPB,this.prodB, this.assB, this.dayTime, this.nextPosPB);
     }
-    public Producer newScreensProd(){
+    public Producer hireScreensProd(){
         this.screensCount++;
         return new Producer(this.screens,this.mutexPS,this.prodS, this.assS, this.dayTime*2, this.nextPosPS);
     }
-    public Producer newCablesProd(){
+    public Producer hireCablesProd(){
         this.cablesCount++;
         return new Producer(this.cables,this.mutexPC,this.prodC, this.assC, this.dayTime, this.nextPosPC);
     }
-    public Assembler newAssembler(){
+    public Assembler hireAssembler(){
         this.assemblerCount++;
         return new Assembler(this.cables, this.screens, this.batteries, this.mutexAB,this.mutexAS, this.mutexAC, this.assB, this.assS, this.assC, this.prodB, this.prodS, this.prodC, this.mutexA, this.dayTime*2, this.nextPosAS, this.nextPosAB, this.nextPosAC, this.phonesCount); 
+    }
+    public void fireBatteryProducer(){
+        for (int i = batteriesProd.length-1; i > -1; i--) {
+            if(batteriesProd[i] != null){
+                batteriesProd[i].fire();
+                batteriesProd[i] = null;
+                this.batteriesCount--;
+                break;
+            }
+        }
+    }
+    public void fireScreenProducer(){
+        for (int i = screensProd.length-1; i > -1; i--) {
+            if(screensProd[i] != null){
+                screensProd[i].fire();
+                screensProd[i] = null;
+                this.screensCount--;
+                break;
+            }
+        }
+    }
+    public void fireCableProducer(){
+        for (int i = cablesProd.length-1; i > -1; i--) {
+            if(cablesProd[i] != null){
+                cablesProd[i].fire();
+                cablesProd[i] = null;
+                this.cablesCount--;
+                break;
+            }
+        }
+    }
+    public void fireAssembler(){
+        for (int i = assemblers.length-1; i > -1; i--) {
+            if(assemblers[i] != null){
+                assemblers[i].fire();
+                assemblers[i] = null;
+                this.assemblerCount--;
+                break;
+            }
+        }
     }
 }

@@ -8,8 +8,10 @@ public class Producer extends Thread {
     private Storage storage;
     private Semaphore semaMutex, semaProd, semaAss;
     private int time, nextPos;
+    boolean hired;
 
     public Producer(Storage storage, Semaphore semaMutex, Semaphore semaProd, Semaphore semaAss, int time, int nextPos) {
+        this.hired = true;
         this.storage = storage;
         this.semaMutex = semaMutex;
         this.semaProd = semaProd;
@@ -20,7 +22,7 @@ public class Producer extends Thread {
     
     @Override
     public void run(){
-        while(true){
+        while(this.hired){
         try {
             this.semaProd.acquire();
             Thread.sleep(this.time);
@@ -33,5 +35,9 @@ public class Producer extends Thread {
             Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, ex);
         }
         }
+    }
+    
+    public void fire(){
+        this.hired = false;
     }
 }
