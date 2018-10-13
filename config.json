@@ -1,15 +1,15 @@
 {
     "dayInSeconds" : "24",
     "daysBeforeDelivery" : "15",
-    "screensStorageMax" : "8",
-    "batteriesStorageMax" : "15",
-    "cablesStorageMax" : "30",
+    "screensStorageMax" : "30",
+    "batteriesStorageMax" : "25",
+    "cablesStorageMax" : "35",
     "batteriesInitProd" : "2",
     "screensInitProd" : "3",
     "cablesInitProd" : "1",
-    "cablesMaxProd" : "12",
-    "screensMaxProd" : "5",
+    "cablesMaxProd" : "3",
+    "screensMaxProd" : "8",
     "batteriesMaxProd" : "4",
-    "initAss" : "1",
-    "maxAss" : "4"
+    "initAss" : "0",
+    "maxAss" : "5"
 }
