@@ -1,36 +1,42 @@
 package Controller;
 
 import java.io.FileReader;
-import java.util.Iterator;
-import org.json.simple.JSONArray;
+import static java.lang.Integer.parseInt;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
  
 public class JSONReadFromFile {
- 
-    @SuppressWarnings("unchecked")
-    public static void main(String[] args) {
+
+    public JSONReadFromFile() {
         JSONParser parser = new JSONParser();
  
         try {
  
-            Object obj = parser.parse(new FileReader("/Users/<username>/Documents/file1.txt"));
+            Object obj = parser.parse(new FileReader("config.json"));
  
             JSONObject jsonObject = (JSONObject) obj;
  
-            String name = (String) jsonObject.get("Name");
-            String author = (String) jsonObject.get("Author");
-            JSONArray companyList = (JSONArray) jsonObject.get("Company List");
- 
-            System.out.println("Name: " + name);
-            System.out.println("Author: " + author);
-            System.out.println("\nCompany List:");
-            Iterator<String> iterator = companyList.iterator();
-            while (iterator.hasNext()) {
-                System.out.println(iterator.next());
-            }
- 
+            int dayInSeconds = Integer.parseInt((String) jsonObject.get("dayInSeconds"));
+            int daysBeforeDelivery = Integer.parseInt((String) jsonObject.get("daysBeforeDelivery"));
+            int screensStorageMax = Integer.parseInt((String) jsonObject.get("screensStorageMax"));
+            int batteriesStorageMax = Integer.parseInt((String) jsonObject.get("batteriesStorageMax"));
+            int cablesStorageMax = Integer.parseInt((String) jsonObject.get("cablesStorageMax"));
+            int screensInitProd = Integer.parseInt((String) jsonObject.get("screensInitProd"));
+            int cablesInitProd = Integer.parseInt((String) jsonObject.get("cablesInitProd"));
+            int batteriesInitProd = Integer.parseInt((String) jsonObject.get("batteriesInitProd"));
+            int cablesMaxProd = Integer.parseInt((String) jsonObject.get("cablesMaxProd"));
+            int screensMaxProd = Integer.parseInt((String) jsonObject.get("screensMaxProd"));
+            int batteriesMaxProd = Integer.parseInt((String) jsonObject.get("batteriesMaxProd"));
+            int initAss = Integer.parseInt((String) jsonObject.get("initAss"));
+            int maxAss = Integer.parseInt((String) jsonObject.get("maxAss"));
+            
+            
+            Controller controller = new Controller();
+            controller.initCompany(dayInSeconds, daysBeforeDelivery, screensStorageMax, batteriesStorageMax, cablesStorageMax, screensInitProd, cablesInitProd, batteriesInitProd, cablesMaxProd, screensMaxProd, batteriesMaxProd, initAss, maxAss);
+            
+            
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
