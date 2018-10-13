@@ -100,6 +100,6 @@ public class Factory {
     }
     public Assembler newAssembler(){
         this.assemblerCount++;
-        return nw
+        return new Assembler(this.cables, this.screens, this.batteries, this.mutexAB,this.mutexAS, this.mutexAC, this.assB, this.assS, this.assC, this.prodB, this.prodS, this.prodC, this.mutexA, this.dayTime*2, this.nextPosAS, this.nextPosAB, this.nextPosAC, this.phonesCount); 
     }
 }
