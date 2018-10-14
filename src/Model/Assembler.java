@@ -6,11 +6,11 @@ import java.util.logging.Logger;
 
 public class Assembler extends Thread {
     Storage storC, storS, storB;
-    Semaphore semMEB, semMES, semMEC, assB, assS, assC, prodB, prodS, prodC, mutexAss;
-    int time, posS, posB, posC, phones;
+    Semaphore semMEB, semMES, semMEC, assB, assS, assC, prodB, prodS, prodC;
+    int time, posS, posB, posC;
     boolean hired;
 
-    public Assembler(Storage storC, Storage storS, Storage storB, Semaphore semMEB, Semaphore semMES, Semaphore semMEC, Semaphore assB, Semaphore assS, Semaphore assC, Semaphore prodB, Semaphore prodS, Semaphore prodC, Semaphore mutexAss, int time, int posS, int posB, int posC, int phones) {
+    public Assembler(Storage storC, Storage storS, Storage storB, Semaphore semMEB, Semaphore semMES, Semaphore semMEC, Semaphore assB, Semaphore assS, Semaphore assC, Semaphore prodB, Semaphore prodS, Semaphore prodC, int time, int posS, int posB, int posC) {
         this.storC = storC;
         this.storS = storS;
         this.storB = storB;
@@ -23,12 +23,10 @@ public class Assembler extends Thread {
         this.prodB = prodB;
         this.prodS = prodS;
         this.prodC = prodC;
-        this.mutexAss = mutexAss;
         this.time = time;
         this.posS = posS;
         this.posB = posB;
         this.posC = posC;
-        this.phones = phones;
         this.hired = true;
     }
 
@@ -74,9 +72,10 @@ public class Assembler extends Thread {
     public void buildPhone(){
         try{
             Thread.sleep(this.time);
-            this.mutexAss.acquire();
-            this.phones++;
-            this.mutexAss.release();
+            Manager.addPhone();
+            Factory.substractBatteriesCount();
+            Factory.substractCablesCount();
+            Factory.substractScreensCount();
         } catch (InterruptedException ex) {
             Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -7,10 +7,10 @@ import java.util.logging.Logger;
 public class Producer extends Thread {
     private Storage storage;
     private Semaphore semaMutex, semaProd, semaAss;
-    private int time, nextPos, tracker;
-    boolean hired;
+    private int time, nextPos, type;
+    private boolean hired;
 
-    public Producer(Storage storage, Semaphore semaMutex, Semaphore semaProd, Semaphore semaAss, int time, int nextPos, int tracker) {
+    public Producer(Storage storage, Semaphore semaMutex, Semaphore semaProd, Semaphore semaAss, int time, int nextPos, int type) {
         this.hired = true;
         this.storage = storage;
         this.semaMutex = semaMutex;
@@ -18,7 +18,7 @@ public class Producer extends Thread {
         this.semaAss = semaAss;
         this.time = time;
         this.nextPos = nextPos;
-        this.tracker = tracker;
+        this.type = type;
     }
     
     @Override
@@ -30,8 +30,19 @@ public class Producer extends Thread {
             this.semaMutex.acquire();
             this.storage.setVec(nextPos, 1);
             this.nextPos=(nextPos+1)%this.storage.getSize();
+            switch (type) {
+                case 0: Factory.addBatteriesCount();
+                        break;
+                case 1: Factory.addScreensCount();
+                        break;
+                case 2: Factory.addCablesCount();
+                        break;
+                default: System.out.println("Bug en producer type");
+                         break;
+            }
             this.semaAss.release();
             this.semaMutex.release();
+            
         } catch (InterruptedException ex) {
             Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -6,21 +6,27 @@ public class Factory {
     // Storage for parts (Buffer)
     private Storage screens, batteries, cables;
     // Count trackers for display in the UI
-    private int screensCount, batteriesCount, cablesCount, assemblerCount, phonesCount;
-    // Producer's count
-    private int prodBCount, prodSCount, prodCCount;
+    private static int screensCount, batteriesCount, cablesCount;
+    // Producer's and assembler's count 
+    private int prodBCount, prodSCount, prodCCount, assemblerCount;
     // How much seconds is a day
     private int dayTime;
-    // How much time before delivery
+    // How much time between deliveries
     private int daysForDelivery;
-    // Different type of producers
+    // How much days for next delivery
+    private int daysLeft;
+    // Different type of producers and assemblers count
     private Producer[] screensProd, batteriesProd, cablesProd;
     // Assembler's array
     private Assembler[] assemblers;
     // Semaphores
-    private Semaphore prodS, prodB, prodC, mutexPS, mutexPB, mutexPC, mutexAS, mutexAB, mutexAC, mutexA, assS, assB, assC, timerManager;
+    private Semaphore prodS, prodB, prodC, mutexPS, mutexPB, mutexPC, mutexAS, mutexAB, mutexAC, assS, assB, assC, timerManager;
     // Buffer pointers (Critical section)
     private int nextPosPS, nextPosPB, nextPosPC, nextPosAS, nextPosAB, nextPosAC;
+    // Manager
+    private Manager manager;
+    // Timer
+    private Timer timer;
 
     public Factory(int dayTime, int daysForDelivery, int screensStorageMax, int batteriesStorageMax, int cablesStorageMax, int batteriesInitProd, int screensInitProd, int cablesInitProd, int cablesMaxProd, int screensMaxProd, int batteriesMaxProd, int initAss, int maxAss) {
         // Initializing production semaphores
@@ -34,7 +40,6 @@ public class Factory {
         this.mutexAS = new Semaphore(1);
         this.mutexAB = new Semaphore(1);
         this.mutexAC = new Semaphore(1);
-        this.mutexA = new Semaphore(1);
         // Initializing assembler semaphores
         this.assS = new Semaphore(0);
         this.assB = new Semaphore(0);
@@ -54,6 +59,7 @@ public class Factory {
         // Assigning JSON Values
         this.dayTime = dayTime;
         this.daysForDelivery = daysForDelivery;
+        this.daysLeft = this.daysForDelivery;
         this.screens = new Storage(screensStorageMax);
         this.batteries = new Storage(batteriesStorageMax);
         this.cables = new Storage(cablesStorageMax);
@@ -68,27 +74,23 @@ public class Factory {
         this.screensCount = 0;
         this.batteriesCount = 0;
         this.cablesCount = 0;
+        // Initialize timer
+        this.timer = new Timer(this.daysForDelivery, this.getHours(3/2), this.timerManager);
+        // Initialize manager with min and max time in hours (MIN = 6 hours | MAX = 18 hours)
+        this.manager = new Manager(this.daysForDelivery, this.daysLeft, this.getHours(6), this.getHours(18), this.timerManager);
         // Initializing producers counters
         for (int i = 0; i < batteriesInitProd; i++) {
-            if(this.hireBatteriesProd()){
-                System.out.println("Battery producer: " + (i+1));
-            }
+            this.hireBatteriesProd();
         }
         for (int i = 0; i < screensInitProd; i++) {
-            if(this.hireScreensProd()){
-                System.out.println("Screen producer: " + (i+1));
-            }
+            this.hireScreensProd();
         }
         for (int i = 0; i < cablesInitProd; i++) {
-            if(this.hireCablesProd()){
-                System.out.println("Cable producer: " + (i+1));
-            }
+            this.hireCablesProd();
         }
         // Initializing assemblers
         for (int i = 0; i < initAss; i++) {
-            if(this.hireAssembler()){
-                System.out.println("Assembler: " + (i+1));
-            }
+            this.hireAssembler();
         }
     }
     
@@ -102,8 +104,9 @@ public class Factory {
     public boolean hireBatteriesProd(){
         for (int i = 0; i < this.batteriesProd.length; i++) {
             if(this.batteriesProd[i] == null){
-                this.batteriesProd[i] = new Producer(this.batteries,this.mutexPB,this.prodB, this.assB, this.dayTime, this.nextPosPB, this.batteriesCount);
+                this.batteriesProd[i] = new Producer(this.batteries,this.mutexPB,this.prodB, this.assB, this.dayTime, this.nextPosPB, 0);
                 this.prodBCount++;
+                System.out.println("Batteries prod: " + this.prodBCount);
                 return true;
             }
         }
@@ -112,8 +115,9 @@ public class Factory {
     public boolean hireScreensProd(){
         for (int i = 0; i < this.screensProd.length; i++) {
             if(this.screensProd[i] == null){
-                this.screensProd[i] = new Producer(this.screens,this.mutexPS,this.prodS, this.assS, this.dayTime*2, this.nextPosPS, this.screensCount);
+                this.screensProd[i] = new Producer(this.screens,this.mutexPS,this.prodS, this.assS, this.dayTime*2, this.nextPosPS, 1);
                 this.prodSCount++;
+                System.out.println("Screens prod: " + this.prodSCount);
                 return true;
             }
         }
@@ -122,8 +126,9 @@ public class Factory {
     public boolean hireCablesProd(){
         for (int i = 0; i < this.cablesProd.length; i++) {
             if(this.cablesProd[i] == null){
-                this.cablesProd[i] = new Producer(this.cables,this.mutexPC,this.prodC, this.assC, this.dayTime, this.nextPosPC, this.cablesCount);
+                this.cablesProd[i] = new Producer(this.cables,this.mutexPC,this.prodC, this.assC, this.dayTime, this.nextPosPC, 2);
                 this.prodCCount++;
+                System.out.println("Cables prod: " + this.prodCCount);
                 return true;
             }
         }
@@ -132,8 +137,9 @@ public class Factory {
     public boolean hireAssembler(){
         for (int i = 0; i < this.assemblers.length; i++) {
             if(this.assemblers[i] == null){
-                this.assemblers[i] = new Assembler(this.cables, this.screens, this.batteries, this.mutexAB,this.mutexAS, this.mutexAC, this.assB, this.assS, this.assC, this.prodB, this.prodS, this.prodC, this.mutexA, this.dayTime*2, this.nextPosAS, this.nextPosAB, this.nextPosAC, this.phonesCount); 
+                this.assemblers[i] = new Assembler(this.cables, this.screens, this.batteries, this.mutexAB,this.mutexAS, this.mutexAC, this.assB, this.assS, this.assC, this.prodB, this.prodS, this.prodC, this.dayTime*2, this.nextPosAS, this.nextPosAB, this.nextPosAC); 
                 this.assemblerCount++;
+                System.out.println("Assembler prod: " + this.assemblerCount);
                 return true;
             }
         }
@@ -183,4 +189,41 @@ public class Factory {
         }
         return false;
     }
+
+    public static int getScreensCount() {
+        return screensCount;
+    }
+
+    public static int getBatteriesCount() {
+        return batteriesCount;
+    }
+
+    public static int getCablesCount() {
+        return cablesCount;
+    }
+
+    public static void addScreensCount() {
+        Factory.screensCount++;
+    }
+
+    public static void addBatteriesCount() {
+        Factory.batteriesCount++;
+    }
+
+    public static void addCablesCount() {
+        Factory.cablesCount++;
+    }
+    
+    public static void substractScreensCount() {
+        Factory.screensCount--;
+    }
+
+    public static void substractBatteriesCount() {
+        Factory.batteriesCount--;
+    }
+
+    public static void substractCablesCount() {
+        Factory.cablesCount = Factory.cablesCount - 2;
+    }
+    
 }
