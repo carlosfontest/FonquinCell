@@ -24,22 +24,25 @@ public class Manager extends Thread {
         this.minTime = minTime;
         this.maxTime = maxTime;
         this.daysForDelivery = daysForDelivery;
+        this.awake = false;
     }
     
     @Override
     public void run(){
         while(true){
-        try {
-            this.mutex.acquire();
-            if(Timer.getDaysLeft() == 0){
-                this.phones = 0;
-                Timer.resetDaysLeft(this.daysForDelivery);
+            try {
+                this.mutex.acquire();
+                this.awake = true;
+                if(Timer.getDaysLeft() == 0){
+                    this.phones = 0;
+                    Timer.resetDaysLeft(this.daysForDelivery);
+                }
+                this.awake = false;
+                this.mutex.release();
+                Thread.sleep(this.minTime + ((int) (Math.random() * (this.maxTime-this.minTime)) + 1));
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Manager.class.getName()).log(Level.SEVERE, null, ex);
             }
-            this.mutex.release();
-            Thread.sleep(this.minTime + ((int) (Math.random() * (this.maxTime-this.minTime)) + 1));
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Manager.class.getName()).log(Level.SEVERE, null, ex);
-        }
         }
     }
 

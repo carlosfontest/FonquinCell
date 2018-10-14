@@ -13,8 +13,6 @@ public class Factory {
     private int dayTime;
     // How much time between deliveries
     private int daysForDelivery;
-    // How much days for next delivery
-    private int daysLeft;
     // Different type of producers and assemblers count
     private Producer[] screensProd, batteriesProd, cablesProd;
     // Assembler's array
@@ -59,7 +57,6 @@ public class Factory {
         // Assigning JSON Values
         this.dayTime = dayTime;
         this.daysForDelivery = daysForDelivery;
-        this.daysLeft = this.daysForDelivery;
         this.screens = new Storage(screensStorageMax);
         this.batteries = new Storage(batteriesStorageMax);
         this.cables = new Storage(cablesStorageMax);

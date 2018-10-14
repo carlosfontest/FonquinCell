@@ -15,20 +15,23 @@ public class Timer extends Thread{
         this.workTime = workTime;
         this.restTime = restTime;
         this.mutex = mutex;
+        this.awake = false;
     }
     
     @Override
     public void run(){
         while(true){
-        try {
-            this.mutex.acquire();
-            Thread.sleep(workTime);
-            this.daysLeft--;
-            this.mutex.release();
-            Thread.sleep(restTime);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Timer.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            try {
+                this.mutex.acquire();
+                this.awake = true;
+                Thread.sleep(workTime);
+                this.daysLeft--;
+                this.awake = false;
+                this.mutex.release();
+                Thread.sleep(restTime);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Timer.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 
