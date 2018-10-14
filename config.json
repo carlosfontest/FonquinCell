@@ -1,0 +1,15 @@
+{
+    "dayInSeconds" : "24",
+    "daysBeforeDelivery" : "15",
+    "screensStorageMax" : "30",
+    "batteriesStorageMax" : "25",
+    "cablesStorageMax" : "35",
+    "batteriesInitProd" : "2",
+    "screensInitProd" : "3",
+    "cablesInitProd" : "1",
+    "cablesMaxProd" : "3",
+    "screensMaxProd" : "8",
+    "batteriesMaxProd" : "4",
+    "initAss" : "0",
+    "maxAss" : "5"
+}
