@@ -95,16 +95,20 @@ public class Factory {
     }
     
     
-    // Returns seconds of an hour in the simulation
+    // Returns miliseconds of an hour in the simulation
     public int getHours(int hours){
-        return (hours * this.dayTime)/24;
+        return (hours * this.dayTime * 1000)/24;
+    }
+    // Returns miliseconds of a day in the simulation
+    public int getDayTime(){
+        return (1000 * this.dayTime);
     }
     
     // Methods for hiring producers and assemblers;
     public boolean hireBatteriesProd(){
         for (int i = 0; i < this.batteriesProd.length; i++) {
             if(this.batteriesProd[i] == null){
-                this.batteriesProd[i] = new Producer(this.batteries,this.mutexPB,this.prodB, this.assB, this.dayTime, this.nextPosPB, 0);
+                this.batteriesProd[i] = new Producer(this.batteries,this.mutexPB,this.prodB, this.assB, this.getDayTime(), this.nextPosPB, 0);
                 this.prodBCount++;
                 System.out.println("Batteries prod: " + this.prodBCount);
                 return true;
@@ -115,7 +119,7 @@ public class Factory {
     public boolean hireScreensProd(){
         for (int i = 0; i < this.screensProd.length; i++) {
             if(this.screensProd[i] == null){
-                this.screensProd[i] = new Producer(this.screens,this.mutexPS,this.prodS, this.assS, this.dayTime*2, this.nextPosPS, 1);
+                this.screensProd[i] = new Producer(this.screens,this.mutexPS,this.prodS, this.assS, this.getDayTime()*2, this.nextPosPS, 1);
                 this.prodSCount++;
                 System.out.println("Screens prod: " + this.prodSCount);
                 return true;
@@ -126,7 +130,7 @@ public class Factory {
     public boolean hireCablesProd(){
         for (int i = 0; i < this.cablesProd.length; i++) {
             if(this.cablesProd[i] == null){
-                this.cablesProd[i] = new Producer(this.cables,this.mutexPC,this.prodC, this.assC, this.dayTime, this.nextPosPC, 2);
+                this.cablesProd[i] = new Producer(this.cables,this.mutexPC,this.prodC, this.assC, this.getDayTime(), this.nextPosPC, 2);
                 this.prodCCount++;
                 System.out.println("Cables prod: " + this.prodCCount);
                 return true;
@@ -137,7 +141,7 @@ public class Factory {
     public boolean hireAssembler(){
         for (int i = 0; i < this.assemblers.length; i++) {
             if(this.assemblers[i] == null){
-                this.assemblers[i] = new Assembler(this.cables, this.screens, this.batteries, this.mutexAB,this.mutexAS, this.mutexAC, this.assB, this.assS, this.assC, this.prodB, this.prodS, this.prodC, this.dayTime*2, this.nextPosAS, this.nextPosAB, this.nextPosAC); 
+                this.assemblers[i] = new Assembler(this.cables, this.screens, this.batteries, this.mutexAB,this.mutexAS, this.mutexAC, this.assB, this.assS, this.assC, this.prodB, this.prodS, this.prodC, this.getDayTime()*2, this.nextPosAS, this.nextPosAB, this.nextPosAC); 
                 this.assemblerCount++;
                 System.out.println("Assembler prod: " + this.assemblerCount);
                 return true;
