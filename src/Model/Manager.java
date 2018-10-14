@@ -15,16 +15,15 @@ import java.util.logging.Logger;
  */
 public class Manager extends Thread {
     private boolean awake;
-    private int minTime, maxTime, daysForDelivery, daysLeft;
+    private int minTime, maxTime, daysForDelivery;
     private static int phones;
     private Semaphore mutex;
 
-    public Manager(int daysForDelivery, int daysLeft, int minTime, int maxTime, Semaphore mutex) {
+    public Manager(int daysForDelivery, int minTime, int maxTime, Semaphore mutex) {
         this.mutex = mutex;
         this.minTime = minTime;
         this.maxTime = maxTime;
         this.daysForDelivery = daysForDelivery;
-        this.daysLeft = daysForDelivery;
     }
     
     @Override
@@ -32,12 +31,12 @@ public class Manager extends Thread {
         while(true){
         try {
             this.mutex.acquire();
-            if(this.daysLeft == 0){
+            if(Timer.getDaysLeft() == 0){
                 this.phones = 0;
-                this.daysLeft = this.daysLeft;
+                Timer.resetDaysLeft(this.daysForDelivery);
             }
             this.mutex.release();
-            this.sleep(this.minTime + ((int) (Math.random() * (this.maxTime-this.minTime)) + 1));
+            Thread.sleep(this.minTime + ((int) (Math.random() * (this.maxTime-this.minTime)) + 1));
         } catch (InterruptedException ex) {
             Logger.getLogger(Manager.class.getName()).log(Level.SEVERE, null, ex);
         }

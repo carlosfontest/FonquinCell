@@ -5,13 +5,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Timer extends Thread{
-    private int daysLeft, time;
+    private static int daysLeft;
+    private int workTime, restTime;
     private Semaphore mutex;
     private boolean awake;
 
-    public Timer(int daysLeft, int time, Semaphore mutex) {
+    public Timer(int daysLeft, int workTime, int restTime, Semaphore mutex) {
         this.daysLeft = daysLeft;
-        this.time = time;
+        this.workTime = workTime;
+        this.restTime = restTime;
         this.mutex = mutex;
     }
     
@@ -20,18 +22,25 @@ public class Timer extends Thread{
         while(true){
         try {
             this.mutex.acquire();
-            
+            Thread.sleep(workTime);
+            this.daysLeft--;
+            this.mutex.release();
+            Thread.sleep(restTime);
         } catch (InterruptedException ex) {
             Logger.getLogger(Timer.class.getName()).log(Level.SEVERE, null, ex);
         }
         }
     }
-    
-    
 
-    public int getDaysLeft() {
+    public static int getDaysLeft() {
         return daysLeft;
     }
+
+    public static void resetDaysLeft(int daysForDelivery) {
+        Timer.daysLeft = daysForDelivery;
+    }
+    
+    
 
     public boolean isAwake() {
         return awake;

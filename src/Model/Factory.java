@@ -75,9 +75,9 @@ public class Factory {
         this.batteriesCount = 0;
         this.cablesCount = 0;
         // Initialize timer
-        this.timer = new Timer(this.daysForDelivery, this.getHours(3/2), this.timerManager);
+        this.timer = new Timer(this.daysForDelivery, this.getHours(3/2), this.getHours(24-3/2), this.timerManager);
         // Initialize manager with min and max time in hours (MIN = 6 hours | MAX = 18 hours)
-        this.manager = new Manager(this.daysForDelivery, this.daysLeft, this.getHours(6), this.getHours(18), this.timerManager);
+        this.manager = new Manager(this.daysForDelivery, this.getHours(6), this.getHours(18), this.timerManager);
         // Initializing producers counters
         for (int i = 0; i < batteriesInitProd; i++) {
             this.hireBatteriesProd();
