@@ -40,9 +40,5 @@ public class Controller {
             JOptionPane.showMessageDialog(frame, e);
         }
     }
-    
-    public void addPart(int type) {
-        
-    }
 }
 

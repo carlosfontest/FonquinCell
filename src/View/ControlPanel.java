@@ -15,12 +15,13 @@ public class ControlPanel extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         //Se pone el ícono del programa
-        setIconImage(new ImageIcon(getClass().getResource("/images/logo.png")).getImage());
+        setIconImage(new ImageIcon(getClass().getResource("images/logo.png")).getImage());
     }
     
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        barCantScreenProd1 = new javax.swing.JProgressBar();
         toolsPanel = new javax.swing.JPanel();
         minimizeIcon = new javax.swing.JLabel();
         closeIcon = new javax.swing.JLabel();
@@ -81,6 +82,12 @@ public class ControlPanel extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         info = new javax.swing.JLabel();
+        barCantAssemblers = new javax.swing.JProgressBar();
+
+        barCantScreenProd1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        barCantScreenProd1.setForeground(new java.awt.Color(70, 24, 30));
+        barCantScreenProd1.setBorderPainted(false);
+        barCantScreenProd1.setStringPainted(true);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(700, 450));
@@ -99,23 +106,23 @@ public class ControlPanel extends javax.swing.JFrame {
             }
         });
 
-        minimizeIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/MinimizarBlanca.png"))); // NOI18N
+        minimizeIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("images/MinimizarBlanca.png"))); // NOI18N
         minimizeIcon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 minimizeIconMouseClicked(evt);
             }
         });
 
-        closeIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/EquisBlanca.png"))); // NOI18N
+        closeIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("images/EquisBlanca.png"))); // NOI18N
         closeIcon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 closeIconMouseClicked(evt);
             }
         });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/name.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("images/name.png"))); // NOI18N
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logo.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("images/logo.png"))); // NOI18N
 
         javax.swing.GroupLayout toolsPanelLayout = new javax.swing.GroupLayout(toolsPanel);
         toolsPanel.setLayout(toolsPanelLayout);
@@ -150,7 +157,7 @@ public class ControlPanel extends javax.swing.JFrame {
         hireScreenProd.setBackground(new java.awt.Color(70, 24, 30));
         hireScreenProd.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         hireScreenProd.setForeground(new java.awt.Color(255, 255, 255));
-        hireScreenProd.setText("Hire Screen Producer");
+        hireScreenProd.setText("Hire [+]");
         hireScreenProd.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         hireScreenProd.setFocusPainted(false);
         hireScreenProd.setFocusable(false);
@@ -159,12 +166,12 @@ public class ControlPanel extends javax.swing.JFrame {
                 hireScreenProdActionPerformed(evt);
             }
         });
-        contentPanel.add(hireScreenProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 175, 32));
+        contentPanel.add(hireScreenProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 80, 32));
 
         fireScreenProd.setBackground(new java.awt.Color(70, 24, 30));
         fireScreenProd.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         fireScreenProd.setForeground(new java.awt.Color(255, 255, 255));
-        fireScreenProd.setText("Fire Screen Producer");
+        fireScreenProd.setText("Fire [-]");
         fireScreenProd.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         fireScreenProd.setFocusPainted(false);
         fireScreenProd.setFocusable(false);
@@ -173,12 +180,12 @@ public class ControlPanel extends javax.swing.JFrame {
                 fireScreenProdActionPerformed(evt);
             }
         });
-        contentPanel.add(fireScreenProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 175, 32));
+        contentPanel.add(fireScreenProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 80, 32));
 
         fireCableProd.setBackground(new java.awt.Color(70, 24, 30));
         fireCableProd.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         fireCableProd.setForeground(new java.awt.Color(255, 255, 255));
-        fireCableProd.setText("Fire Cable Producer");
+        fireCableProd.setText("Fire [-]");
         fireCableProd.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         fireCableProd.setFocusPainted(false);
         fireCableProd.setFocusable(false);
@@ -187,12 +194,12 @@ public class ControlPanel extends javax.swing.JFrame {
                 fireCableProdActionPerformed(evt);
             }
         });
-        contentPanel.add(fireCableProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, 175, 32));
+        contentPanel.add(fireCableProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, 80, 32));
 
         hireCableProd.setBackground(new java.awt.Color(70, 24, 30));
         hireCableProd.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         hireCableProd.setForeground(new java.awt.Color(255, 255, 255));
-        hireCableProd.setText("Hire Cable Producer");
+        hireCableProd.setText("Hire [+]");
         hireCableProd.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         hireCableProd.setFocusPainted(false);
         hireCableProd.setFocusable(false);
@@ -201,12 +208,12 @@ public class ControlPanel extends javax.swing.JFrame {
                 hireCableProdActionPerformed(evt);
             }
         });
-        contentPanel.add(hireCableProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 175, 32));
+        contentPanel.add(hireCableProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 80, 32));
 
         fireBatteryProd.setBackground(new java.awt.Color(70, 24, 30));
         fireBatteryProd.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         fireBatteryProd.setForeground(new java.awt.Color(255, 255, 255));
-        fireBatteryProd.setText("Fire Battery Producer");
+        fireBatteryProd.setText("Fire [-]");
         fireBatteryProd.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         fireBatteryProd.setFocusPainted(false);
         fireBatteryProd.setFocusable(false);
@@ -215,12 +222,12 @@ public class ControlPanel extends javax.swing.JFrame {
                 fireBatteryProdActionPerformed(evt);
             }
         });
-        contentPanel.add(fireBatteryProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 160, 175, 32));
+        contentPanel.add(fireBatteryProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 120, 80, 32));
 
         hireBatteryProd.setBackground(new java.awt.Color(70, 24, 30));
         hireBatteryProd.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         hireBatteryProd.setForeground(new java.awt.Color(255, 255, 255));
-        hireBatteryProd.setText("Hire Battery Producer");
+        hireBatteryProd.setText("Hire [+]");
         hireBatteryProd.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         hireBatteryProd.setFocusPainted(false);
         hireBatteryProd.setFocusable(false);
@@ -229,7 +236,7 @@ public class ControlPanel extends javax.swing.JFrame {
                 hireBatteryProdActionPerformed(evt);
             }
         });
-        contentPanel.add(hireBatteryProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 120, 175, 32));
+        contentPanel.add(hireBatteryProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 120, 80, 32));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMaximumSize(new java.awt.Dimension(1000, 3));
@@ -247,7 +254,7 @@ public class ControlPanel extends javax.swing.JFrame {
             .addGap(0, 3, Short.MAX_VALUE)
         );
 
-        contentPanel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 680, -1));
+        contentPanel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 680, -1));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setMaximumSize(new java.awt.Dimension(3, 32767));
@@ -264,7 +271,7 @@ public class ControlPanel extends javax.swing.JFrame {
             .addGap(0, 200, Short.MAX_VALUE)
         );
 
-        contentPanel.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(471, 16, -1, 200));
+        contentPanel.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(471, 6, -1, 200));
 
         barCantScreenProd.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         barCantScreenProd.setForeground(new java.awt.Color(70, 24, 30));
@@ -284,68 +291,71 @@ public class ControlPanel extends javax.swing.JFrame {
         barCantBatteryProd.setStringPainted(true);
         contentPanel.add(barCantBatteryProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 80, 175, -1));
 
+        cantBatteryProd.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         cantBatteryProd.setForeground(new java.awt.Color(255, 255, 255));
         cantBatteryProd.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cantBatteryProd.setText("jLabel1");
         contentPanel.add(cantBatteryProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 50, 50, -1));
 
+        cantScreenProd.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         cantScreenProd.setForeground(new java.awt.Color(255, 255, 255));
         cantScreenProd.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cantScreenProd.setText("jLabel1");
         contentPanel.add(cantScreenProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 50, -1));
 
+        cantCableProd.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         cantCableProd.setForeground(new java.awt.Color(255, 255, 255));
         cantCableProd.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cantCableProd.setText("jLabel1");
         contentPanel.add(cantCableProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 50, 50, -1));
 
         jLabel4.setFont(new java.awt.Font("Calibri Light", 1, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
         jLabel4.setText("Battery Productor");
         contentPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 10, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Calibri Light", 3, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Productors:");
         contentPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Calibri Light", 1, 24)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setForeground(new java.awt.Color(204, 204, 204));
         jLabel7.setText("Assembler of Cellphones");
-        contentPanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
+        contentPanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
 
-        cantBatteries.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
+        cantBatteries.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         cantBatteries.setForeground(new java.awt.Color(255, 255, 255));
         cantBatteries.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cantBatteries.setText("num");
-        contentPanel.add(cantBatteries, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 200, 40, -1));
+        contentPanel.add(cantBatteries, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 170, 40, -1));
 
-        jLabel9.setFont(new java.awt.Font("Calibri Light", 3, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Cables:");
-        contentPanel.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, -1, -1));
+        jLabel9.setText("Cables Stock:");
+        contentPanel.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, -1, -1));
 
-        jLabel10.setFont(new java.awt.Font("Calibri Light", 3, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Screens:");
-        contentPanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
+        jLabel10.setText("Screens Stock:");
+        contentPanel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, -1));
 
-        cantScreens.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
+        cantScreens.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         cantScreens.setForeground(new java.awt.Color(255, 255, 255));
         cantScreens.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cantScreens.setText("num");
-        contentPanel.add(cantScreens, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, 40, -1));
+        contentPanel.add(cantScreens, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 40, -1));
 
-        cantCables.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
+        cantCables.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         cantCables.setForeground(new java.awt.Color(255, 255, 255));
         cantCables.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cantCables.setText("num");
-        contentPanel.add(cantCables, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, 40, -1));
+        contentPanel.add(cantCables, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 170, 40, -1));
 
         jLabel8.setFont(new java.awt.Font("Calibri Light", 1, 24)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setForeground(new java.awt.Color(204, 204, 204));
         jLabel8.setText("Cable Productor");
-        contentPanel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, -1, -1));
+        contentPanel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, -1, -1));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setMaximumSize(new java.awt.Dimension(3, 32767));
@@ -359,15 +369,15 @@ public class ControlPanel extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 220, Short.MAX_VALUE)
+            .addGap(0, 200, Short.MAX_VALUE)
         );
 
-        contentPanel.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 16, -1, 220));
+        contentPanel.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 6, -1, 200));
 
         hireAssambler.setBackground(new java.awt.Color(70, 24, 30));
         hireAssambler.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         hireAssambler.setForeground(new java.awt.Color(255, 255, 255));
-        hireAssambler.setText("Hire Assembler");
+        hireAssambler.setText("Hire [+]");
         hireAssambler.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         hireAssambler.setFocusPainted(false);
         hireAssambler.setFocusable(false);
@@ -381,7 +391,7 @@ public class ControlPanel extends javax.swing.JFrame {
         fireAssambler.setBackground(new java.awt.Color(70, 24, 30));
         fireAssambler.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         fireAssambler.setForeground(new java.awt.Color(255, 255, 255));
-        fireAssambler.setText("Fire Assembler");
+        fireAssambler.setText("Fire [-]");
         fireAssambler.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         fireAssambler.setFocusPainted(false);
         fireAssambler.setFocusable(false);
@@ -392,44 +402,45 @@ public class ControlPanel extends javax.swing.JFrame {
         });
         contentPanel.add(fireAssambler, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 110, 32));
 
-        jLabel6.setFont(new java.awt.Font("Calibri Light", 3, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Batteries:");
-        contentPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 200, -1, -1));
+        jLabel6.setText("Batteries Stock:");
+        contentPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 170, -1, -1));
 
-        jLabel11.setFont(new java.awt.Font("Calibri Light", 3, 14)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Productors:");
         contentPanel.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 50, -1, -1));
 
-        jLabel12.setFont(new java.awt.Font("Calibri Light", 3, 14)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Productors:");
         contentPanel.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, -1, -1));
 
         jLabel13.setFont(new java.awt.Font("Calibri Light", 1, 24)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setForeground(new java.awt.Color(204, 204, 204));
         jLabel13.setText("Screen Productor");
         contentPanel.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
-        jLabel14.setFont(new java.awt.Font("Calibri Light", 3, 14)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Assemblers:");
         contentPanel.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, -1, -1));
 
+        cantAssamblers.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         cantAssamblers.setForeground(new java.awt.Color(255, 255, 255));
         cantAssamblers.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cantAssamblers.setText("jLabel1");
         contentPanel.add(cantAssamblers, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 350, 50, -1));
 
         jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
-        contentPanel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 40, 10));
+        contentPanel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 40, 10));
 
         jSeparator2.setBackground(new java.awt.Color(255, 255, 255));
         contentPanel.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 70, 50, 10));
 
         jSeparator3.setBackground(new java.awt.Color(255, 255, 255));
-        contentPanel.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 220, 40, 10));
+        contentPanel.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 190, 40, 10));
 
         jSeparator4.setBackground(new java.awt.Color(255, 255, 255));
         contentPanel.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 370, 50, 10));
@@ -441,46 +452,50 @@ public class ControlPanel extends javax.swing.JFrame {
         contentPanel.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 70, 50, 10));
 
         jSeparator7.setBackground(new java.awt.Color(255, 255, 255));
-        contentPanel.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, 40, 10));
+        contentPanel.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 190, 40, 10));
 
-        jLabel15.setFont(new java.awt.Font("Calibri Light", 3, 14)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setText("Timer:");
-        contentPanel.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 260, -1, -1));
+        jLabel15.setText("Timer State:");
+        contentPanel.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 230, -1, -1));
 
+        timerState.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         timerState.setForeground(new java.awt.Color(255, 255, 255));
         timerState.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         timerState.setText("jLabel1");
-        contentPanel.add(timerState, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 260, 80, -1));
+        contentPanel.add(timerState, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 260, 80, -1));
 
         jSeparator8.setBackground(new java.awt.Color(255, 255, 255));
-        contentPanel.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 280, 80, 10));
+        contentPanel.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 280, 80, 10));
 
-        jLabel16.setFont(new java.awt.Font("Calibri Light", 3, 14)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel16.setText("Manager:");
-        contentPanel.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 300, -1, -1));
+        jLabel16.setText("Manager State:");
+        contentPanel.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 310, -1, -1));
 
+        managerState.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         managerState.setForeground(new java.awt.Color(255, 255, 255));
         managerState.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         managerState.setText("jLabel1");
-        contentPanel.add(managerState, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 300, 80, -1));
+        contentPanel.add(managerState, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 340, 80, -1));
 
         jSeparator9.setBackground(new java.awt.Color(255, 255, 255));
-        contentPanel.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 320, 80, 10));
+        contentPanel.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 360, 80, 10));
 
         jSeparator10.setBackground(new java.awt.Color(255, 255, 255));
-        contentPanel.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 360, 70, 10));
+        contentPanel.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 360, 80, 10));
 
-        jLabel17.setFont(new java.awt.Font("Calibri Light", 3, 14)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel17.setText("Days To Delivery:");
-        contentPanel.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 340, -1, -1));
+        contentPanel.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 310, 150, -1));
 
+        daysToDelivery.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         daysToDelivery.setForeground(new java.awt.Color(255, 255, 255));
         daysToDelivery.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         daysToDelivery.setText("jLabel1");
-        contentPanel.add(daysToDelivery, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 340, 70, -1));
+        contentPanel.add(daysToDelivery, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 340, 80, -1));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setMaximumSize(new java.awt.Dimension(3, 32767));
@@ -494,23 +509,25 @@ public class ControlPanel extends javax.swing.JFrame {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 110, Short.MAX_VALUE)
+            .addGap(0, 158, Short.MAX_VALUE)
         );
 
-        contentPanel.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 260, -1, 110));
+        contentPanel.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(471, 218, -1, 158));
 
         jSeparator11.setBackground(new java.awt.Color(255, 255, 255));
-        contentPanel.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 330, 80, 10));
+        contentPanel.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 280, 80, 10));
 
+        phonesToDeliver.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         phonesToDeliver.setForeground(new java.awt.Color(255, 255, 255));
         phonesToDeliver.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         phonesToDeliver.setText("jLabel1");
-        contentPanel.add(phonesToDeliver, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 310, 80, -1));
+        contentPanel.add(phonesToDeliver, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 260, 80, -1));
 
-        jLabel18.setFont(new java.awt.Font("Calibri Light", 3, 14)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel18.setText("Phones To Deliver:");
-        contentPanel.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, -1, -1));
+        contentPanel.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(308, 230, 160, -1));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setMaximumSize(new java.awt.Dimension(3, 32767));
@@ -524,18 +541,24 @@ public class ControlPanel extends javax.swing.JFrame {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 158, Short.MAX_VALUE)
         );
 
-        contentPanel.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, -1, -1));
+        contentPanel.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 218, -1, 158));
 
-        info.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/info.png"))); // NOI18N
+        info.setIcon(new javax.swing.ImageIcon(getClass().getResource("images/info.png"))); // NOI18N
         info.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 infoMouseClicked(evt);
             }
         });
         contentPanel.add(info, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 350, 30, -1));
+
+        barCantAssemblers.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        barCantAssemblers.setForeground(new java.awt.Color(70, 24, 30));
+        barCantAssemblers.setBorderPainted(false);
+        barCantAssemblers.setStringPainted(true);
+        contentPanel.add(barCantAssemblers, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 267, 250, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -605,16 +628,18 @@ public class ControlPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_fireAssamblerActionPerformed
 
     private void infoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_infoMouseClicked
-        Icon icono = new ImageIcon(getClass().getResource("../images/logoCFRQ.png"));
+        Icon icono = new ImageIcon(getClass().getResource("images/logoCFRQ.png"));
         JOptionPane.showMessageDialog(this, "Software elaborado por Carlos Fontes y Rafael Quintero\n "
-            + "       Proyecto N° 1 - Sistemas Operativos - UNIMET\n                       ©CF&RQ - FontquinCell\n "
+            + "       Proyecto N° 1 - Sistemas Operativos - UNIMET\n                        ©CF&RQ - FonquinCell\n "
             + "                      23 de Octubre de 2018", "Información", JOptionPane.INFORMATION_MESSAGE, icono);
     }//GEN-LAST:event_infoMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JProgressBar barCantAssemblers;
     public javax.swing.JProgressBar barCantBatteryProd;
     public javax.swing.JProgressBar barCantCableProd;
     public javax.swing.JProgressBar barCantScreenProd;
+    public javax.swing.JProgressBar barCantScreenProd1;
     public javax.swing.JLabel cantAssamblers;
     public javax.swing.JLabel cantBatteries;
     public javax.swing.JLabel cantBatteryProd;

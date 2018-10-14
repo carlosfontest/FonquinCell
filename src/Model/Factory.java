@@ -260,5 +260,9 @@ public class Factory {
         return cablesProd.length;
     }
     
+    public int getAssemblersSize() {
+        return assemblers.length;
+    }
+    
     
 }
