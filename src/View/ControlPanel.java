@@ -559,51 +559,74 @@ public class ControlPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_closeIconMouseClicked
 
     private void hireScreenProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hireScreenProdActionPerformed
-        
+        if(controller.factory.hireScreensProd()) {
+            this.cantScreenProd.setText( String.valueOf((Integer.parseInt(this.cantScreenProd.getText())) + 1) );
+        }
     }//GEN-LAST:event_hireScreenProdActionPerformed
 
     private void fireScreenProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fireScreenProdActionPerformed
-        // TODO add your handling code here:
+        if(controller.factory.fireScreenProducer()) {
+            this.cantScreenProd.setText( String.valueOf((Integer.parseInt(this.cantScreenProd.getText())) - 1) );
+        }
     }//GEN-LAST:event_fireScreenProdActionPerformed
 
     private void fireCableProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fireCableProdActionPerformed
-        // TODO add your handling code here:
+        
+        if(controller.factory.fireCableProducer()) {
+            this.cantCableProd.setText( String.valueOf((Integer.parseInt(this.cantCableProd.getText())) - 1) );
+        }
     }//GEN-LAST:event_fireCableProdActionPerformed
 
     private void hireCableProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hireCableProdActionPerformed
-        // TODO add your handling code here:
+        
+        if(controller.factory.hireCablesProd()) {
+            this.cantCableProd.setText( String.valueOf((Integer.parseInt(this.cantCableProd.getText())) + 1) );
+        }
     }//GEN-LAST:event_hireCableProdActionPerformed
 
     private void fireBatteryProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fireBatteryProdActionPerformed
-        // TODO add your handling code here:
+        
+        if(controller.factory.fireBatteryProducer()) {
+            this.cantBatteryProd.setText( String.valueOf((Integer.parseInt(this.cantBatteryProd.getText())) - 1) );
+        }
     }//GEN-LAST:event_fireBatteryProdActionPerformed
 
     private void hireBatteryProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hireBatteryProdActionPerformed
-        // TODO add your handling code here:
+        
+        if(controller.factory.hireBatteriesProd()) {
+            this.cantBatteryProd.setText( String.valueOf((Integer.parseInt(this.cantBatteryProd.getText())) + 1) );
+        }
     }//GEN-LAST:event_hireBatteryProdActionPerformed
 
     private void hireAssamblerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hireAssamblerActionPerformed
-        // TODO add your handling code here:
+        
+        if(controller.factory.hireAssembler()) {
+            this.cantAssamblers.setText( String.valueOf((Integer.parseInt(this.cantAssamblers.getText())) + 1) );
+        }
+        
     }//GEN-LAST:event_hireAssamblerActionPerformed
 
     private void fireAssamblerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fireAssamblerActionPerformed
-        // TODO add your handling code here:
+        
+        if(controller.factory.fireAssembler()) {
+            this.cantAssamblers.setText( String.valueOf((Integer.parseInt(this.cantAssamblers.getText())) - 1) );
+        }
     }//GEN-LAST:event_fireAssamblerActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JProgressBar barCantBatteryProd;
     public javax.swing.JProgressBar barCantCableProd;
     public javax.swing.JProgressBar barCantScreenProd;
-    private javax.swing.JLabel cantAssamblers;
-    private javax.swing.JLabel cantBatteries;
-    private javax.swing.JLabel cantBatteryProd;
-    private javax.swing.JLabel cantCableProd;
-    private javax.swing.JLabel cantCables;
-    private javax.swing.JLabel cantScreenProd;
-    private javax.swing.JLabel cantScreens;
+    public javax.swing.JLabel cantAssamblers;
+    public javax.swing.JLabel cantBatteries;
+    public javax.swing.JLabel cantBatteryProd;
+    public javax.swing.JLabel cantCableProd;
+    public javax.swing.JLabel cantCables;
+    public javax.swing.JLabel cantScreenProd;
+    public javax.swing.JLabel cantScreens;
     private javax.swing.JLabel closeIcon;
     private javax.swing.JPanel contentPanel;
-    private javax.swing.JLabel daysToDelivery;
+    public javax.swing.JLabel daysToDelivery;
     private javax.swing.JButton fireAssambler;
     private javax.swing.JButton fireBatteryProd;
     private javax.swing.JButton fireCableProd;
@@ -645,10 +668,10 @@ public class ControlPanel extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JLabel managerState;
+    public javax.swing.JLabel managerState;
     private javax.swing.JLabel minimizeIcon;
-    private javax.swing.JLabel phonesToDeliver;
-    private javax.swing.JLabel timerState;
+    public javax.swing.JLabel phonesToDeliver;
+    public javax.swing.JLabel timerState;
     private javax.swing.JPanel toolsPanel;
     // End of variables declaration//GEN-END:variables
 }

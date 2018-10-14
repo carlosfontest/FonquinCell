@@ -1,5 +1,6 @@
 package Model;
 
+import View.ControlPanel;
 import java.util.concurrent.Semaphore;
 
 public class Factory {
@@ -25,12 +26,16 @@ public class Factory {
     private Manager manager;
     // Timer
     private Timer timer;
+    // GUI Property
+    private ControlPanel cpanel;
 
-    public Factory(int dayTime, int daysForDelivery, int screensStorageMax, int batteriesStorageMax, int cablesStorageMax, int batteriesInitProd, int screensInitProd, int cablesInitProd, int cablesMaxProd, int screensMaxProd, int batteriesMaxProd, int initAss, int maxAss) {
+    public Factory(ControlPanel cpanel, int dayTime, int daysForDelivery, int screensStorageMax, int batteriesStorageMax, int cablesStorageMax, int batteriesInitProd, int screensInitProd, int cablesInitProd, int cablesMaxProd, int screensMaxProd, int batteriesMaxProd, int initAss, int maxAss) {
+        // Initialize GUI Porperty
+        this.cpanel = cpanel;
         // Initializing production semaphores
-        this.prodS = new Semaphore(screensInitProd);
-        this.prodB = new Semaphore(batteriesInitProd);
-        this.prodC = new Semaphore(cablesInitProd);
+        this.prodS = new Semaphore(screensStorageMax);
+        this.prodB = new Semaphore(batteriesStorageMax);
+        this.prodC = new Semaphore(cablesStorageMax);
         // Initializing mutex semaphores
         this.mutexPS = new Semaphore(1);
         this.mutexPC = new Semaphore(1);
@@ -42,6 +47,8 @@ public class Factory {
         this.assS = new Semaphore(0);
         this.assB = new Semaphore(0);
         this.assC = new Semaphore(0);
+        // Initializing timer and manager semaphore
+        this.timerManager = new Semaphore(1);
         // Initializing next positions
         this.nextPosPS = 0;
         this.nextPosPB = 0;
@@ -63,6 +70,7 @@ public class Factory {
         this.batteriesProd = new Producer[batteriesMaxProd];
         this.screensProd = new Producer[screensMaxProd];
         this.cablesProd = new Producer[cablesMaxProd];
+        this.assemblers = new Assembler[maxAss];
         // Initializing producers count
         this.prodBCount = 0;
         this.prodSCount = 0;
@@ -91,6 +99,7 @@ public class Factory {
         // Initialize manager with min and max time in hours (MIN = 6 hours | MAX = 18 hours)
         this.manager = new Manager(this.daysForDelivery, this.getHours(6), this.getHours(18), this.timerManager);
         this.manager.start();
+        
     }
     
     
@@ -107,7 +116,7 @@ public class Factory {
     public boolean hireBatteriesProd(){
         for (int i = 0; i < this.batteriesProd.length; i++) {
             if(this.batteriesProd[i] == null){
-                this.batteriesProd[i] = new Producer(this.batteries,this.mutexPB,this.prodB, this.assB, this.getDayTime(), this.nextPosPB, 0);
+                this.batteriesProd[i] = new Producer(this.cpanel, this.batteries,this.mutexPB,this.prodB, this.assB, this.getDayTime(), this.nextPosPB, 0);
                 this.batteriesProd[i].start();
                 this.prodBCount++;
                 System.out.println("Batteries prod: " + this.prodBCount);
@@ -119,7 +128,7 @@ public class Factory {
     public boolean hireScreensProd(){
         for (int i = 0; i < this.screensProd.length; i++) {
             if(this.screensProd[i] == null){
-                this.screensProd[i] = new Producer(this.screens,this.mutexPS,this.prodS, this.assS, this.getDayTime()*2, this.nextPosPS, 1);
+                this.screensProd[i] = new Producer(this.cpanel, this.screens,this.mutexPS,this.prodS, this.assS, this.getDayTime()*2, this.nextPosPS, 1);
                 this.screensProd[i].start();
                 this.prodSCount++;
                 System.out.println("Screens prod: " + this.prodSCount);
@@ -131,7 +140,7 @@ public class Factory {
     public boolean hireCablesProd(){
         for (int i = 0; i < this.cablesProd.length; i++) {
             if(this.cablesProd[i] == null){
-                this.cablesProd[i] = new Producer(this.cables,this.mutexPC,this.prodC, this.assC, this.getDayTime(), this.nextPosPC, 2);
+                this.cablesProd[i] = new Producer(this.cpanel, this.cables,this.mutexPC,this.prodC, this.assC, this.getDayTime(), this.nextPosPC, 2);
                 this.cablesProd[i].start();
                 this.prodCCount++;
                 System.out.println("Cables prod: " + this.prodCCount);
@@ -143,7 +152,7 @@ public class Factory {
     public boolean hireAssembler(){
         for (int i = 0; i < this.assemblers.length; i++) {
             if(this.assemblers[i] == null){
-                this.assemblers[i] = new Assembler(this.cables, this.screens, this.batteries, this.mutexAB,this.mutexAS, this.mutexAC, this.assB, this.assS, this.assC, this.prodB, this.prodS, this.prodC, this.getDayTime()*2, this.nextPosAS, this.nextPosAB, this.nextPosAC); 
+                this.assemblers[i] = new Assembler(this.cpanel, this.cables, this.screens, this.batteries, this.mutexAB,this.mutexAS, this.mutexAC, this.assB, this.assS, this.assC, this.prodB, this.prodS, this.prodC, this.getDayTime()*2, this.nextPosAS, this.nextPosAB, this.nextPosAC); 
                 this.assemblers[i].start();
                 this.assemblerCount++;
                 System.out.println("Assembler prod: " + this.assemblerCount);

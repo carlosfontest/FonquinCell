@@ -1,5 +1,6 @@
 package Model;
 
+import View.ControlPanel;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -9,8 +10,11 @@ public class Assembler extends Thread {
     Semaphore semMEB, semMES, semMEC, assB, assS, assC, prodB, prodS, prodC;
     int time, posS, posB, posC;
     boolean hired;
+    // GUI Property
+    private ControlPanel cpanel;
 
-    public Assembler(Storage storC, Storage storS, Storage storB, Semaphore semMEB, Semaphore semMES, Semaphore semMEC, Semaphore assB, Semaphore assS, Semaphore assC, Semaphore prodB, Semaphore prodS, Semaphore prodC, int time, int posS, int posB, int posC) {
+    public Assembler(ControlPanel cpanel, Storage storC, Storage storS, Storage storB, Semaphore semMEB, Semaphore semMES, Semaphore semMEC, Semaphore assB, Semaphore assS, Semaphore assC, Semaphore prodB, Semaphore prodS, Semaphore prodC, int time, int posS, int posB, int posC) {
+        this.cpanel = cpanel;
         this.storC = storC;
         this.storS = storS;
         this.storB = storB;
