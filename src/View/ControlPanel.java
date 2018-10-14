@@ -559,58 +559,35 @@ public class ControlPanel extends javax.swing.JFrame {
     }//GEN-LAST:event_closeIconMouseClicked
 
     private void hireScreenProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hireScreenProdActionPerformed
-        if(controller.factory.hireScreensProd()) {
-            this.cantScreenProd.setText( String.valueOf((Integer.parseInt(this.cantScreenProd.getText())) + 1) );
-        }
+        this.controller.factory.hireScreensProd();
     }//GEN-LAST:event_hireScreenProdActionPerformed
 
     private void fireScreenProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fireScreenProdActionPerformed
-        if(controller.factory.fireScreenProducer()) {
-            this.cantScreenProd.setText( String.valueOf((Integer.parseInt(this.cantScreenProd.getText())) - 1) );
-        }
+        this.controller.factory.fireScreenProducer();
     }//GEN-LAST:event_fireScreenProdActionPerformed
 
     private void fireCableProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fireCableProdActionPerformed
-        
-        if(controller.factory.fireCableProducer()) {
-            this.cantCableProd.setText( String.valueOf((Integer.parseInt(this.cantCableProd.getText())) - 1) );
-        }
+        this.controller.factory.fireCableProducer();
     }//GEN-LAST:event_fireCableProdActionPerformed
 
     private void hireCableProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hireCableProdActionPerformed
-        
-        if(controller.factory.hireCablesProd()) {
-            this.cantCableProd.setText( String.valueOf((Integer.parseInt(this.cantCableProd.getText())) + 1) );
-        }
+        this.controller.factory.hireCablesProd();
     }//GEN-LAST:event_hireCableProdActionPerformed
 
     private void fireBatteryProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fireBatteryProdActionPerformed
-        
-        if(controller.factory.fireBatteryProducer()) {
-            this.cantBatteryProd.setText( String.valueOf((Integer.parseInt(this.cantBatteryProd.getText())) - 1) );
-        }
+        this.controller.factory.fireBatteryProducer();
     }//GEN-LAST:event_fireBatteryProdActionPerformed
 
     private void hireBatteryProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hireBatteryProdActionPerformed
-        
-        if(controller.factory.hireBatteriesProd()) {
-            this.cantBatteryProd.setText( String.valueOf((Integer.parseInt(this.cantBatteryProd.getText())) + 1) );
-        }
+        this.controller.factory.hireBatteriesProd();
     }//GEN-LAST:event_hireBatteryProdActionPerformed
 
     private void hireAssamblerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hireAssamblerActionPerformed
-        
-        if(controller.factory.hireAssembler()) {
-            this.cantAssamblers.setText( String.valueOf((Integer.parseInt(this.cantAssamblers.getText())) + 1) );
-        }
-        
+        this.controller.factory.hireAssembler();
     }//GEN-LAST:event_hireAssamblerActionPerformed
 
     private void fireAssamblerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fireAssamblerActionPerformed
-        
-        if(controller.factory.fireAssembler()) {
-            this.cantAssamblers.setText( String.valueOf((Integer.parseInt(this.cantAssamblers.getText())) - 1) );
-        }
+        this.controller.factory.fireAssembler();
     }//GEN-LAST:event_fireAssamblerActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

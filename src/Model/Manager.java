@@ -14,7 +14,7 @@ import java.util.logging.Logger;
  * @author rafae
  */
 public class Manager extends Thread {
-    private boolean awake;
+    private static boolean awake;
     private int minTime, maxTime, daysForDelivery;
     private static int phones;
     private Semaphore mutex;
@@ -46,12 +46,15 @@ public class Manager extends Thread {
         }
     }
 
-    public boolean isAwake() {
-        return awake;
+    public static String isAwake() {
+        if(Manager.awake){
+            return "Awake";
+        }
+        return "Asleep";
     }
 
     public static int getPhones() {
-        return phones;
+        return Manager.phones;
     }
 
     public static void addPhone() {

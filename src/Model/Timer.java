@@ -8,7 +8,7 @@ public class Timer extends Thread{
     private static int daysLeft;
     private int workTime, restTime;
     private Semaphore mutex;
-    private boolean awake;
+    private static boolean awake;
 
     public Timer(int daysLeft, int workTime, int restTime, Semaphore mutex) {
         this.daysLeft = daysLeft;
@@ -36,16 +36,17 @@ public class Timer extends Thread{
     }
 
     public static int getDaysLeft() {
-        return daysLeft;
+        return Timer.daysLeft;
     }
 
     public static void resetDaysLeft(int daysForDelivery) {
         Timer.daysLeft = daysForDelivery;
     }
-    
-    
 
-    public boolean isAwake() {
-        return awake;
+    public static String isAwake() {
+        if(Timer.awake){
+            return "Awake";
+        }
+        return "Asleep";
     }
 }

@@ -12,10 +12,8 @@ public class Producer extends Thread {
     private Semaphore semaMutex, semaProd, semaAss;
     private int time, nextPos, type;
     private boolean hired;
-    // GUI Property
-    private ControlPanel cpanel;
 
-    public Producer(ControlPanel cpanel, Storage storage, Semaphore semaMutex, Semaphore semaProd, Semaphore semaAss, int time, int nextPos, int type) {
+    public Producer(Storage storage, Semaphore semaMutex, Semaphore semaProd, Semaphore semaAss, int time, int nextPos, int type) {
         this.hired = true;
         this.storage = storage;
         this.semaMutex = semaMutex;
@@ -24,7 +22,6 @@ public class Producer extends Thread {
         this.time = time;
         this.nextPos = nextPos;
         this.type = type;
-        this.cpanel = cpanel;
     }
 
     @Override
@@ -40,15 +37,12 @@ public class Producer extends Thread {
                 switch (this.type) {
                     case 0:
                         Factory.addBatteriesCount();
-                        cpanel.cantBatteries.setText( String.valueOf((Integer.parseInt(cpanel.cantBatteries.getText())) + 1) );
                         break;
                     case 1:
                         Factory.addScreensCount();
-                        cpanel.cantScreens.setText( String.valueOf((Integer.parseInt(cpanel.cantScreens.getText())) + 1) );
                         break;
                     case 2:
                         Factory.addCablesCount();
-                        cpanel.cantCables.setText( String.valueOf((Integer.parseInt(cpanel.cantCables.getText())) + 1) );
                         break;
                     default:
                         System.out.println("Bug en producer type");

@@ -7,32 +7,36 @@ import javax.swing.JOptionPane;
 
 public class Controller {
     public Factory factory;
-    ControlPanel cpanel;
+    private ControlPanel cPanel;
+    private GUIUpdater guiThread;
 
     public Controller() {
-        this.cpanel = new ControlPanel(this);
+        this.cPanel = new ControlPanel(this);
     }
     
     
     public void initCompany(int dayInSeconds, int daysBeforeDelivery, int screensStorageMax, int batteriesStorageMax, int cablesStorageMax, int screensInitProd, int cablesInitProd, int batteriesInitProd, int cablesMaxProd, int screensMaxProd, int batteriesMaxProd, int initAss, int maxAss) {     
-        this.factory = new Factory(this.cpanel, dayInSeconds, daysBeforeDelivery, screensStorageMax, batteriesStorageMax, cablesStorageMax, batteriesInitProd, screensInitProd, cablesInitProd, cablesMaxProd, screensMaxProd, batteriesMaxProd, initAss, maxAss);
-        this.cpanel.setVisible(true);
+        this.factory = new Factory(dayInSeconds, daysBeforeDelivery, screensStorageMax, batteriesStorageMax, cablesStorageMax, batteriesInitProd, screensInitProd, cablesInitProd, cablesMaxProd, screensMaxProd, batteriesMaxProd, initAss, maxAss);
+        this.cPanel.setVisible(true);
         
         // Establecer valores iniciales en la interfaz
-        this.cpanel.cantScreenProd.setText(String.valueOf(screensInitProd));
-        this.cpanel.cantCableProd.setText(String.valueOf(cablesInitProd));
-        this.cpanel.cantBatteryProd.setText(String.valueOf(batteriesInitProd));
+        this.cPanel.cantScreenProd.setText(String.valueOf(screensInitProd));
+        this.cPanel.cantCableProd.setText(String.valueOf(cablesInitProd));
+        this.cPanel.cantBatteryProd.setText(String.valueOf(batteriesInitProd));
         
-        this.cpanel.cantBatteries.setText("0");
-        this.cpanel.cantCables.setText("0");
-        this.cpanel.cantScreens.setText("0");
+        this.cPanel.cantBatteries.setText("0");
+        this.cPanel.cantCables.setText("0");
+        this.cPanel.cantScreens.setText("0");
         
-        this.cpanel.cantAssamblers.setText(String.valueOf(initAss));
+        this.cPanel.cantAssamblers.setText(String.valueOf(initAss));
         
-        this.cpanel.phonesToDeliver.setText("0");
-        this.cpanel.timerState.setText("Asleep");
-        this.cpanel.managerState.setText("Asleep");
-        this.cpanel.daysToDelivery.setText(String.valueOf(daysBeforeDelivery));
+        this.cPanel.phonesToDeliver.setText("0");
+        this.cPanel.timerState.setText("Asleep");
+        this.cPanel.managerState.setText("Asleep");
+        this.cPanel.daysToDelivery.setText(String.valueOf(daysBeforeDelivery));
+        
+        this.guiThread = new GUIUpdater(this.cPanel, this.factory);
+        this.guiThread.start();
     }
     
     public void minimize(JFrame frame) {
