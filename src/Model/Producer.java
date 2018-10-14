@@ -7,10 +7,10 @@ import java.util.logging.Logger;
 public class Producer extends Thread {
     private Storage storage;
     private Semaphore semaMutex, semaProd, semaAss;
-    private int time, nextPos;
+    private int time, nextPos, tracker;
     boolean hired;
 
-    public Producer(Storage storage, Semaphore semaMutex, Semaphore semaProd, Semaphore semaAss, int time, int nextPos) {
+    public Producer(Storage storage, Semaphore semaMutex, Semaphore semaProd, Semaphore semaAss, int time, int nextPos, int tracker) {
         this.hired = true;
         this.storage = storage;
         this.semaMutex = semaMutex;
@@ -18,6 +18,7 @@ public class Producer extends Thread {
         this.semaAss = semaAss;
         this.time = time;
         this.nextPos = nextPos;
+        this.tracker = tracker;
     }
     
     @Override
