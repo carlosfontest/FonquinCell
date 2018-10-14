@@ -71,10 +71,6 @@ public class Factory {
         this.screensCount = 0;
         this.batteriesCount = 0;
         this.cablesCount = 0;
-        // Initialize timer
-        this.timer = new Timer(this.daysForDelivery, this.getHours(3/2), this.getHours(24-3/2), this.timerManager);
-        // Initialize manager with min and max time in hours (MIN = 6 hours | MAX = 18 hours)
-        this.manager = new Manager(this.daysForDelivery, this.getHours(6), this.getHours(18), this.timerManager);
         // Initializing producers counters
         for (int i = 0; i < batteriesInitProd; i++) {
             this.hireBatteriesProd();
@@ -89,6 +85,12 @@ public class Factory {
         for (int i = 0; i < initAss; i++) {
             this.hireAssembler();
         }
+        // Initialize timer
+        this.timer = new Timer(this.daysForDelivery, this.getHours(3/2), this.getHours(24-3/2), this.timerManager);
+        this.timer.start();
+        // Initialize manager with min and max time in hours (MIN = 6 hours | MAX = 18 hours)
+        this.manager = new Manager(this.daysForDelivery, this.getHours(6), this.getHours(18), this.timerManager);
+        this.manager.start();
     }
     
     
@@ -106,6 +108,7 @@ public class Factory {
         for (int i = 0; i < this.batteriesProd.length; i++) {
             if(this.batteriesProd[i] == null){
                 this.batteriesProd[i] = new Producer(this.batteries,this.mutexPB,this.prodB, this.assB, this.getDayTime(), this.nextPosPB, 0);
+                this.batteriesProd[i].start();
                 this.prodBCount++;
                 System.out.println("Batteries prod: " + this.prodBCount);
                 return true;
@@ -117,6 +120,7 @@ public class Factory {
         for (int i = 0; i < this.screensProd.length; i++) {
             if(this.screensProd[i] == null){
                 this.screensProd[i] = new Producer(this.screens,this.mutexPS,this.prodS, this.assS, this.getDayTime()*2, this.nextPosPS, 1);
+                this.screensProd[i].start();
                 this.prodSCount++;
                 System.out.println("Screens prod: " + this.prodSCount);
                 return true;
@@ -128,6 +132,7 @@ public class Factory {
         for (int i = 0; i < this.cablesProd.length; i++) {
             if(this.cablesProd[i] == null){
                 this.cablesProd[i] = new Producer(this.cables,this.mutexPC,this.prodC, this.assC, this.getDayTime(), this.nextPosPC, 2);
+                this.cablesProd[i].start();
                 this.prodCCount++;
                 System.out.println("Cables prod: " + this.prodCCount);
                 return true;
@@ -139,6 +144,7 @@ public class Factory {
         for (int i = 0; i < this.assemblers.length; i++) {
             if(this.assemblers[i] == null){
                 this.assemblers[i] = new Assembler(this.cables, this.screens, this.batteries, this.mutexAB,this.mutexAS, this.mutexAC, this.assB, this.assS, this.assC, this.prodB, this.prodS, this.prodC, this.getDayTime()*2, this.nextPosAS, this.nextPosAB, this.nextPosAC); 
+                this.assemblers[i].start();
                 this.assemblerCount++;
                 System.out.println("Assembler prod: " + this.assemblerCount);
                 return true;
