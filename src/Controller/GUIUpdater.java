@@ -41,6 +41,10 @@ public class GUIUpdater extends Thread {
             this.cPanel.cantCables.setText(String.valueOf(Factory.getCablesCount()));
             this.cPanel.phonesToDeliver.setText(String.valueOf(Manager.getPhones()));
             this.cPanel.cantAssamblers.setText(String.valueOf(this.factory.getAssemblerCount()));
+            this.cPanel.barCantBatteryProd.setValue((this.factory.getProdBCount()*100 / this.factory.getBatteriesProdSize()));
+            this.cPanel.barCantCableProd.setValue((this.factory.getProdCCount()*100 / this.factory.getCablesProdSize()));
+            this.cPanel.barCantScreenProd.setValue((this.factory.getProdSCount()*100 / this.factory.getScreensProdSize()));
+            
         }
     }
     

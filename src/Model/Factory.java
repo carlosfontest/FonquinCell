@@ -113,7 +113,6 @@ public class Factory {
                 this.batteriesProd[i] = new Producer(this.batteries,this.mutexPB,this.prodB, this.assB, this.getDayTime(), this.nextPosPB, 0);
                 this.batteriesProd[i].start();
                 this.prodBCount++;
-                System.out.println("Batteries prod: " + this.prodBCount);
                 return true;
             }
         }
@@ -125,7 +124,6 @@ public class Factory {
                 this.screensProd[i] = new Producer(this.screens,this.mutexPS,this.prodS, this.assS, this.getDayTime()*2, this.nextPosPS, 1);
                 this.screensProd[i].start();
                 this.prodSCount++;
-                System.out.println("Screens prod: " + this.prodSCount);
                 return true;
             }
         }
@@ -137,7 +135,6 @@ public class Factory {
                 this.cablesProd[i] = new Producer(this.cables,this.mutexPC,this.prodC, this.assC, this.getDayTime(), this.nextPosPC, 2);
                 this.cablesProd[i].start();
                 this.prodCCount++;
-                System.out.println("Cables prod: " + this.prodCCount);
                 return true;
             }
         }
@@ -149,7 +146,6 @@ public class Factory {
                 this.assemblers[i] = new Assembler(this.cables, this.screens, this.batteries, this.mutexAB,this.mutexAS, this.mutexAC, this.assB, this.assS, this.assC, this.prodB, this.prodS, this.prodC, this.getDayTime()*2, this.nextPosAS, this.nextPosAB, this.nextPosAC); 
                 this.assemblers[i].start();
                 this.assemblerCount++;
-                System.out.println("Assembler prod: " + this.assemblerCount);
                 return true;
             }
         }
@@ -251,5 +247,18 @@ public class Factory {
     public static void substractCablesCount() {
         Factory.cablesCount = Factory.cablesCount - 2;
     }
+
+    public int getScreensProdSize() {
+        return screensProd.length;
+    }
+
+    public int getBatteriesProdSize() {
+        return batteriesProd.length;
+    }
+
+    public int getCablesProdSize() {
+        return cablesProd.length;
+    }
+    
     
 }

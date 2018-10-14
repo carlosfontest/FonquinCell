@@ -33,7 +33,6 @@ public class Producer extends Thread {
                 this.semaMutex.acquire();
                 this.storage.setVec(nextPos, 1);
                 this.nextPos = (nextPos + 1) % this.storage.getSize();
-                System.out.println(this.type);
                 switch (this.type) {
                     case 0:
                         Factory.addBatteriesCount();
