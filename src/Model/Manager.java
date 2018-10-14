@@ -1,18 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Model;
 
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author rafae
- */
 public class Manager extends Thread {
     private static boolean awake;
     private int minTime, maxTime, daysForDelivery;
@@ -24,22 +15,25 @@ public class Manager extends Thread {
         this.minTime = minTime;
         this.maxTime = maxTime;
         this.daysForDelivery = daysForDelivery;
-        this.awake = false;
+        this.awake = true;
     }
     
     @Override
     public void run(){
         while(true){
             try {
-                this.mutex.acquire();
+                // Tiempo que estrá dormido
+                int random = this.minTime + ((int) (Math.random() * (this.maxTime-this.minTime)) + 1);
                 this.awake = true;
+                Thread.sleep(this.minTime * 4 - random);
+                this.mutex.acquire();
                 if(Timer.getDaysLeft() == 0){
                     this.phones = 0;
                     Timer.resetDaysLeft(this.daysForDelivery);
                 }
                 this.awake = false;
                 this.mutex.release();
-                Thread.sleep(this.minTime + ((int) (Math.random() * (this.maxTime-this.minTime)) + 1));
+                Thread.sleep(random);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Manager.class.getName()).log(Level.SEVERE, null, ex);
             }

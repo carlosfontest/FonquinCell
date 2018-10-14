@@ -45,8 +45,8 @@ public class Timer extends Thread{
 
     public static String isAwake() {
         if(Timer.awake){
-            return "Awake";
+            return "Working";
         }
-        return "Asleep";
+        return "Resting";
     }
 }

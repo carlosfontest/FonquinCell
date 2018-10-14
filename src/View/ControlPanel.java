@@ -1,6 +1,9 @@
 package View;
 
 import Controller.Controller;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 public class ControlPanel extends javax.swing.JFrame {
     private Controller controller;
@@ -11,6 +14,8 @@ public class ControlPanel extends javax.swing.JFrame {
         this.controller = controller;
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        //Se pone el ícono del programa
+        setIconImage(new ImageIcon(getClass().getResource("/images/logo.png")).getImage());
     }
     
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -75,6 +80,7 @@ public class ControlPanel extends javax.swing.JFrame {
         phonesToDeliver = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
+        info = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(700, 450));
@@ -305,7 +311,7 @@ public class ControlPanel extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Calibri Light", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Assambler of Cellphones");
+        jLabel7.setText("Assembler of Cellphones");
         contentPanel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
 
         cantBatteries.setFont(new java.awt.Font("Calibri Light", 0, 14)); // NOI18N
@@ -361,7 +367,7 @@ public class ControlPanel extends javax.swing.JFrame {
         hireAssambler.setBackground(new java.awt.Color(70, 24, 30));
         hireAssambler.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         hireAssambler.setForeground(new java.awt.Color(255, 255, 255));
-        hireAssambler.setText("Hire Assambler");
+        hireAssambler.setText("Hire Assembler");
         hireAssambler.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         hireAssambler.setFocusPainted(false);
         hireAssambler.setFocusable(false);
@@ -370,12 +376,12 @@ public class ControlPanel extends javax.swing.JFrame {
                 hireAssamblerActionPerformed(evt);
             }
         });
-        contentPanel.add(hireAssambler, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 110, 32));
+        contentPanel.add(hireAssambler, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 110, 32));
 
         fireAssambler.setBackground(new java.awt.Color(70, 24, 30));
         fireAssambler.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         fireAssambler.setForeground(new java.awt.Color(255, 255, 255));
-        fireAssambler.setText("Fire Assambler");
+        fireAssambler.setText("Fire Assembler");
         fireAssambler.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         fireAssambler.setFocusPainted(false);
         fireAssambler.setFocusable(false);
@@ -384,7 +390,7 @@ public class ControlPanel extends javax.swing.JFrame {
                 fireAssamblerActionPerformed(evt);
             }
         });
-        contentPanel.add(fireAssambler, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 110, 32));
+        contentPanel.add(fireAssambler, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 110, 32));
 
         jLabel6.setFont(new java.awt.Font("Calibri Light", 3, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -408,13 +414,13 @@ public class ControlPanel extends javax.swing.JFrame {
 
         jLabel14.setFont(new java.awt.Font("Calibri Light", 3, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setText("Assamblers:");
-        contentPanel.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, -1, -1));
+        jLabel14.setText("Assemblers:");
+        contentPanel.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, -1, -1));
 
         cantAssamblers.setForeground(new java.awt.Color(255, 255, 255));
         cantAssamblers.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cantAssamblers.setText("jLabel1");
-        contentPanel.add(cantAssamblers, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, 50, -1));
+        contentPanel.add(cantAssamblers, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 350, 50, -1));
 
         jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
         contentPanel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 40, 10));
@@ -426,7 +432,7 @@ public class ControlPanel extends javax.swing.JFrame {
         contentPanel.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 220, 40, 10));
 
         jSeparator4.setBackground(new java.awt.Color(255, 255, 255));
-        contentPanel.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 370, 50, 10));
+        contentPanel.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 370, 50, 10));
 
         jSeparator5.setBackground(new java.awt.Color(255, 255, 255));
         contentPanel.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 50, 10));
@@ -464,7 +470,7 @@ public class ControlPanel extends javax.swing.JFrame {
         contentPanel.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 320, 80, 10));
 
         jSeparator10.setBackground(new java.awt.Color(255, 255, 255));
-        contentPanel.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 360, 80, 10));
+        contentPanel.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 360, 70, 10));
 
         jLabel17.setFont(new java.awt.Font("Calibri Light", 3, 14)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
@@ -474,7 +480,7 @@ public class ControlPanel extends javax.swing.JFrame {
         daysToDelivery.setForeground(new java.awt.Color(255, 255, 255));
         daysToDelivery.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         daysToDelivery.setText("jLabel1");
-        contentPanel.add(daysToDelivery, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 340, 80, -1));
+        contentPanel.add(daysToDelivery, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 340, 70, -1));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setMaximumSize(new java.awt.Dimension(3, 32767));
@@ -518,10 +524,18 @@ public class ControlPanel extends javax.swing.JFrame {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 110, Short.MAX_VALUE)
+            .addGap(0, 100, Short.MAX_VALUE)
         );
 
         contentPanel.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, -1, -1));
+
+        info.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/info.png"))); // NOI18N
+        info.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                infoMouseClicked(evt);
+            }
+        });
+        contentPanel.add(info, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 350, 30, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -590,6 +604,13 @@ public class ControlPanel extends javax.swing.JFrame {
         this.controller.factory.fireAssembler();
     }//GEN-LAST:event_fireAssamblerActionPerformed
 
+    private void infoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_infoMouseClicked
+        Icon icono = new ImageIcon(getClass().getResource("../images/logoCFRQ.png"));
+        JOptionPane.showMessageDialog(this, "Software elaborado por Carlos Fontes y Rafael Quintero\n "
+            + "       Proyecto N° 1 - Sistemas Operativos - UNIMET\n                       ©CF&RQ - FontquinCell\n "
+            + "                      23 de Octubre de 2018", "Información", JOptionPane.INFORMATION_MESSAGE, icono);
+    }//GEN-LAST:event_infoMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JProgressBar barCantBatteryProd;
     public javax.swing.JProgressBar barCantCableProd;
@@ -612,6 +633,7 @@ public class ControlPanel extends javax.swing.JFrame {
     private javax.swing.JButton hireBatteryProd;
     private javax.swing.JButton hireCableProd;
     private javax.swing.JButton hireScreenProd;
+    private javax.swing.JLabel info;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
