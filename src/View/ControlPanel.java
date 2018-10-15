@@ -106,23 +106,23 @@ public class ControlPanel extends javax.swing.JFrame {
             }
         });
 
-        minimizeIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/MinimizarBlanca.png"))); // NOI18N
+        minimizeIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("images/MinimizarBlanca.png"))); // NOI18N
         minimizeIcon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 minimizeIconMouseClicked(evt);
             }
         });
 
-        closeIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/EquisBlanca.png"))); // NOI18N
+        closeIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("images/EquisBlanca.png"))); // NOI18N
         closeIcon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 closeIconMouseClicked(evt);
             }
         });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/name.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("images/name.png"))); // NOI18N
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logo.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("images/logo.png"))); // NOI18N
 
         javax.swing.GroupLayout toolsPanelLayout = new javax.swing.GroupLayout(toolsPanel);
         toolsPanel.setLayout(toolsPanelLayout);
@@ -546,7 +546,7 @@ public class ControlPanel extends javax.swing.JFrame {
 
         contentPanel.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 218, -1, 158));
 
-        info.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/info.png"))); // NOI18N
+        info.setIcon(new javax.swing.ImageIcon(getClass().getResource("images/info.png"))); // NOI18N
         info.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 infoMouseClicked(evt);
