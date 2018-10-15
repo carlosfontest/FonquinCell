@@ -55,6 +55,20 @@ public class Producer extends Thread {
                 Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        switch (this.type) {
+            case 0:
+                Factory.removeBatteryProducer();
+                break;
+            case 1:
+                Factory.removeScreenProducer();
+                break;
+            case 2:
+                Factory.removeCableProducer();
+                break;
+            default:
+                System.out.println("Bug en producer type");
+                break;
+        }
     }
 
     public void fire() {

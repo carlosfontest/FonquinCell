@@ -106,23 +106,23 @@ public class ControlPanel extends javax.swing.JFrame {
             }
         });
 
-        minimizeIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("images/MinimizarBlanca.png"))); // NOI18N
+        minimizeIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/MinimizarBlanca.png"))); // NOI18N
         minimizeIcon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 minimizeIconMouseClicked(evt);
             }
         });
 
-        closeIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("images/EquisBlanca.png"))); // NOI18N
+        closeIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/EquisBlanca.png"))); // NOI18N
         closeIcon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 closeIconMouseClicked(evt);
             }
         });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("images/name.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/name.png"))); // NOI18N
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("images/logo.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logo.png"))); // NOI18N
 
         javax.swing.GroupLayout toolsPanelLayout = new javax.swing.GroupLayout(toolsPanel);
         toolsPanel.setLayout(toolsPanelLayout);
@@ -166,7 +166,7 @@ public class ControlPanel extends javax.swing.JFrame {
                 hireScreenProdActionPerformed(evt);
             }
         });
-        contentPanel.add(hireScreenProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 80, 32));
+        contentPanel.add(hireScreenProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 80, 32));
 
         fireScreenProd.setBackground(new java.awt.Color(70, 24, 30));
         fireScreenProd.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -180,7 +180,7 @@ public class ControlPanel extends javax.swing.JFrame {
                 fireScreenProdActionPerformed(evt);
             }
         });
-        contentPanel.add(fireScreenProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 80, 32));
+        contentPanel.add(fireScreenProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 80, 32));
 
         fireCableProd.setBackground(new java.awt.Color(70, 24, 30));
         fireCableProd.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -194,7 +194,7 @@ public class ControlPanel extends javax.swing.JFrame {
                 fireCableProdActionPerformed(evt);
             }
         });
-        contentPanel.add(fireCableProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, 80, 32));
+        contentPanel.add(fireCableProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 80, 32));
 
         hireCableProd.setBackground(new java.awt.Color(70, 24, 30));
         hireCableProd.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -208,7 +208,7 @@ public class ControlPanel extends javax.swing.JFrame {
                 hireCableProdActionPerformed(evt);
             }
         });
-        contentPanel.add(hireCableProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 80, 32));
+        contentPanel.add(hireCableProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 120, 80, 32));
 
         fireBatteryProd.setBackground(new java.awt.Color(70, 24, 30));
         fireBatteryProd.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -222,7 +222,7 @@ public class ControlPanel extends javax.swing.JFrame {
                 fireBatteryProdActionPerformed(evt);
             }
         });
-        contentPanel.add(fireBatteryProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 120, 80, 32));
+        contentPanel.add(fireBatteryProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 120, 80, 32));
 
         hireBatteryProd.setBackground(new java.awt.Color(70, 24, 30));
         hireBatteryProd.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -236,7 +236,7 @@ public class ControlPanel extends javax.swing.JFrame {
                 hireBatteryProdActionPerformed(evt);
             }
         });
-        contentPanel.add(hireBatteryProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 120, 80, 32));
+        contentPanel.add(hireBatteryProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 120, 80, 32));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMaximumSize(new java.awt.Dimension(1000, 3));
@@ -277,19 +277,19 @@ public class ControlPanel extends javax.swing.JFrame {
         barCantScreenProd.setForeground(new java.awt.Color(70, 24, 30));
         barCantScreenProd.setBorderPainted(false);
         barCantScreenProd.setStringPainted(true);
-        contentPanel.add(barCantScreenProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 175, -1));
+        contentPanel.add(barCantScreenProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 190, -1));
 
         barCantCableProd.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         barCantCableProd.setForeground(new java.awt.Color(70, 24, 30));
         barCantCableProd.setBorderPainted(false);
         barCantCableProd.setStringPainted(true);
-        contentPanel.add(barCantCableProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, 175, -1));
+        contentPanel.add(barCantCableProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, 190, -1));
 
         barCantBatteryProd.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         barCantBatteryProd.setForeground(new java.awt.Color(70, 24, 30));
         barCantBatteryProd.setBorderPainted(false);
         barCantBatteryProd.setStringPainted(true);
-        contentPanel.add(barCantBatteryProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 80, 175, -1));
+        contentPanel.add(barCantBatteryProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 80, 180, -1));
 
         cantBatteryProd.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         cantBatteryProd.setForeground(new java.awt.Color(255, 255, 255));
@@ -386,7 +386,7 @@ public class ControlPanel extends javax.swing.JFrame {
                 hireAssamblerActionPerformed(evt);
             }
         });
-        contentPanel.add(hireAssambler, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 110, 32));
+        contentPanel.add(hireAssambler, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 110, 32));
 
         fireAssambler.setBackground(new java.awt.Color(70, 24, 30));
         fireAssambler.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -400,7 +400,7 @@ public class ControlPanel extends javax.swing.JFrame {
                 fireAssamblerActionPerformed(evt);
             }
         });
-        contentPanel.add(fireAssambler, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 110, 32));
+        contentPanel.add(fireAssambler, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 110, 32));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -546,7 +546,7 @@ public class ControlPanel extends javax.swing.JFrame {
 
         contentPanel.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 218, -1, 158));
 
-        info.setIcon(new javax.swing.ImageIcon(getClass().getResource("images/info.png"))); // NOI18N
+        info.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/info.png"))); // NOI18N
         info.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 infoMouseClicked(evt);
@@ -572,7 +572,7 @@ public class ControlPanel extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(toolsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE))
+                .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();

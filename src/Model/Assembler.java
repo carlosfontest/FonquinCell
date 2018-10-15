@@ -68,6 +68,7 @@ public class Assembler extends Thread {
                 Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        Factory.removeAssembler();
     }
     
     public void buildPhone(){
