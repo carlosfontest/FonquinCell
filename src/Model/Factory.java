@@ -51,7 +51,6 @@ public class Factory {
         this.nextPosAC = 0;
         this.nextPosAB = 0;
         // Initializing counters
-        this.assemblerCount = 0;
         this.batteriesCount = 0;
         this.screensCount = 0;
         this.cablesCount = 0;
@@ -65,10 +64,11 @@ public class Factory {
         this.screensProd = new Producer[screensMaxProd];
         this.cablesProd = new Producer[cablesMaxProd];
         this.assemblers = new Assembler[maxAss];
-        // Initializing producers count
+        // Initializing producers and assemblers count
         this.prodBCount = 0;
         this.prodSCount = 0;
         this.prodCCount = 0;
+        this.assemblerCount = 0;
         // Parts count
         this.screensCount = 0;
         this.batteriesCount = 0;
