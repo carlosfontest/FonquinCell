@@ -7,7 +7,7 @@ public class Factory {
     // Count trackers for display in the UI
     private static int screensCount, batteriesCount, cablesCount;
     // Producer's and assembler's count 
-    private int prodBCount, prodSCount, prodCCount, assemblerCount;
+    private static int prodBCount, prodSCount, prodCCount, assemblerCount;
     // How much seconds is a day
     private int dayTime;
     // How much time between deliveries
@@ -108,6 +108,10 @@ public class Factory {
     
     // Methods for hiring producers and assemblers;
     public boolean hireBatteriesProd(){
+        if(this.prodBCount == this.batteries.getSize()){
+            System.out.println("Batteries producers are full");
+            return false;
+        }
         for (int i = 0; i < this.batteriesProd.length; i++) {
             if(this.batteriesProd[i] == null){
                 this.batteriesProd[i] = new Producer(this.batteries,this.mutexPB,this.prodB, this.assB, this.getDayTime(), this.nextPosPB, 0);
@@ -118,7 +122,12 @@ public class Factory {
         }
         return false;
     }
+    
     public boolean hireScreensProd(){
+        if(this.prodSCount == this.screens.getSize()){
+            System.out.println("Screen producers are full");
+            return false;
+        }
         for (int i = 0; i < this.screensProd.length; i++) {
             if(this.screensProd[i] == null){
                 this.screensProd[i] = new Producer(this.screens,this.mutexPS,this.prodS, this.assS, this.getDayTime()*2, this.nextPosPS, 1);
@@ -130,6 +139,10 @@ public class Factory {
         return false;
     }
     public boolean hireCablesProd(){
+        if(this.prodCCount == this.cables.getSize()){
+            System.out.println("Cable producers are full");
+            return false;
+        }
         for (int i = 0; i < this.cablesProd.length; i++) {
             if(this.cablesProd[i] == null){
                 this.cablesProd[i] = new Producer(this.cables,this.mutexPC,this.prodC, this.assC, this.getDayTime(), this.nextPosPC, 2);
@@ -141,6 +154,10 @@ public class Factory {
         return false;
     }
     public boolean hireAssembler(){
+        if(this.assemblerCount == this.assemblers.length){
+            System.out.println("Assemblers are full");
+            return false;
+        }
         for (int i = 0; i < this.assemblers.length; i++) {
             if(this.assemblers[i] == null){
                 this.assemblers[i] = new Assembler(this.cables, this.screens, this.batteries, this.mutexAB,this.mutexAS, this.mutexAC, this.assB, this.assS, this.assC, this.prodB, this.prodS, this.prodC, this.getDayTime()*2, this.nextPosAS, this.nextPosAB, this.nextPosAC); 
@@ -156,7 +173,6 @@ public class Factory {
             if(batteriesProd[i] != null){
                 batteriesProd[i].fire();
                 batteriesProd[i] = null;
-                this.prodBCount--;
                 return true;
             }
         }
@@ -167,7 +183,6 @@ public class Factory {
             if(screensProd[i] != null){
                 screensProd[i].fire();
                 screensProd[i] = null;
-                this.prodSCount--;
                 return true;
             }
         }
@@ -178,7 +193,6 @@ public class Factory {
             if(cablesProd[i] != null){
                 cablesProd[i].fire();
                 cablesProd[i] = null;
-                this.prodCCount--;
                 return true;
             }
         }
@@ -189,7 +203,6 @@ public class Factory {
             if(assemblers[i] != null){
                 assemblers[i].fire();
                 assemblers[i] = null;
-                this.assemblerCount--;
                 return true;
             }
         }
@@ -264,5 +277,16 @@ public class Factory {
         return assemblers.length;
     }
     
-    
+    public static void removeBatteryProducer(){
+        Factory.prodBCount--;
+    }
+    public static void removeScreenProducer(){
+        Factory.prodSCount--;
+    }
+    public static void removeCableProducer(){
+        Factory.prodCCount--;
+    }
+    public static void removeAssembler(){
+        Factory.assemblerCount--;
+    }
 }
