@@ -203,6 +203,7 @@ public class Factory {
             if(assemblers[i] != null){
                 assemblers[i].fire();
                 assemblers[i] = null;
+                Factory.removeAssembler();
                 return true;
             }
         }
