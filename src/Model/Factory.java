@@ -19,7 +19,7 @@ public class Factory {
     // Semaphores
     private Semaphore prodS, prodB, prodC, mutexPS, mutexPB, mutexPC, mutexAS, mutexAB, mutexAC, assS, assB, assC, timerManager;
     // Buffer pointers (Critical section)
-    private int nextPosPS, nextPosPB, nextPosPC, nextPosAS, nextPosAB, nextPosAC;
+    public static int nextPosPS, nextPosPB, nextPosPC, nextPosAS, nextPosAB, nextPosAC;
     // Manager
     private Manager manager;
     // Timer
@@ -114,7 +114,7 @@ public class Factory {
         }
         for (int i = 0; i < this.batteriesProd.length; i++) {
             if(this.batteriesProd[i] == null){
-                this.batteriesProd[i] = new Producer(this.batteries,this.mutexPB,this.prodB, this.assB, this.getDayTime(), this.nextPosPB, 0);
+                this.batteriesProd[i] = new Producer(this.batteries,this.mutexPB,this.prodB, this.assB, this.getDayTime(), 0);
                 this.batteriesProd[i].start();
                 this.prodBCount++;
                 return true;
@@ -130,7 +130,7 @@ public class Factory {
         }
         for (int i = 0; i < this.screensProd.length; i++) {
             if(this.screensProd[i] == null){
-                this.screensProd[i] = new Producer(this.screens,this.mutexPS,this.prodS, this.assS, this.getDayTime()*2, this.nextPosPS, 1);
+                this.screensProd[i] = new Producer(this.screens,this.mutexPS,this.prodS, this.assS, this.getDayTime()*2, 1);
                 this.screensProd[i].start();
                 this.prodSCount++;
                 return true;
@@ -145,7 +145,7 @@ public class Factory {
         }
         for (int i = 0; i < this.cablesProd.length; i++) {
             if(this.cablesProd[i] == null){
-                this.cablesProd[i] = new Producer(this.cables,this.mutexPC,this.prodC, this.assC, this.getDayTime(), this.nextPosPC, 2);
+                this.cablesProd[i] = new Producer(this.cables,this.mutexPC,this.prodC, this.assC, this.getDayTime(), 2);
                 this.cablesProd[i].start();
                 this.prodCCount++;
                 return true;
@@ -160,7 +160,7 @@ public class Factory {
         }
         for (int i = 0; i < this.assemblers.length; i++) {
             if(this.assemblers[i] == null){
-                this.assemblers[i] = new Assembler(this.cables, this.screens, this.batteries, this.mutexAB,this.mutexAS, this.mutexAC, this.assB, this.assS, this.assC, this.prodB, this.prodS, this.prodC, this.getDayTime()*2, this.nextPosAS, this.nextPosAB, this.nextPosAC); 
+                this.assemblers[i] = new Assembler(this.cables, this.screens, this.batteries, this.mutexAB,this.mutexAS, this.mutexAC, this.assB, this.assS, this.assC, this.prodB, this.prodS, this.prodC, this.getDayTime()*2); 
                 this.assemblers[i].start();
                 this.assemblerCount++;
                 return true;

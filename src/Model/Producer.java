@@ -10,17 +10,16 @@ public class Producer extends Thread {
 
     private Storage storage;
     private Semaphore semaMutex, semaProd, semaAss;
-    private int time, nextPos, type;
+    private int time, type;
     private boolean hired;
 
-    public Producer(Storage storage, Semaphore semaMutex, Semaphore semaProd, Semaphore semaAss, int time, int nextPos, int type) {
+    public Producer(Storage storage, Semaphore semaMutex, Semaphore semaProd, Semaphore semaAss, int time, int type) {
         this.hired = true;
         this.storage = storage;
         this.semaMutex = semaMutex;
         this.semaProd = semaProd;
         this.semaAss = semaAss;
         this.time = time;
-        this.nextPos = nextPos;
         this.type = type;
     }
 
@@ -31,16 +30,20 @@ public class Producer extends Thread {
                 this.semaProd.acquire();
                 Thread.sleep(this.time);
                 this.semaMutex.acquire();
-                this.storage.setVec(nextPos, 1);
-                this.nextPos = (nextPos + 1) % this.storage.getSize();
                 switch (this.type) {
                     case 0:
+                        this.storage.setVec(Factory.nextPosPB, 1);
+                        Factory.nextPosPB = (Factory.nextPosPB + 1) % this.storage.getSize();
                         Factory.addBatteriesCount();
                         break;
                     case 1:
+                        this.storage.setVec(Factory.nextPosPS, 1);
+                        Factory.nextPosPS = (Factory.nextPosPS + 1) % this.storage.getSize();
                         Factory.addScreensCount();
                         break;
                     case 2:
+                        this.storage.setVec(Factory.nextPosPC, 1);
+                        Factory.nextPosPC = (Factory.nextPosPC + 1) % this.storage.getSize();
                         Factory.addCablesCount();
                         break;
                     default:
