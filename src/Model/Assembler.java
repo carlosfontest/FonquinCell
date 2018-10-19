@@ -47,14 +47,17 @@ public class Assembler extends Thread {
                     this.storC.setVec(posC, 0);
                     this.posC = (this.posC+1)%this.storC.getSize();
                 }
+                Factory.substractCablesCount();
                 this.semMEC.release();
                 this.semMES.acquire();
                 this.storS.setVec(posS, 0);
                 this.posS = (this.posS+1)%this.storS.getSize();
+                Factory.substractScreensCount();
                 this.semMES.release();
                 this.semMEB.acquire();
                 this.storB.setVec(posB, 0);
                 this.posB = (this.posB+1)%this.storB.getSize();
+                Factory.substractBatteriesCount();
                 this.semMEB.release();
                 this.prodC.release(2);
                 this.prodS.release();
@@ -68,9 +71,6 @@ public class Assembler extends Thread {
     
     public void buildPhone(){
         try{
-            Factory.substractBatteriesCount();
-            Factory.substractCablesCount();
-            Factory.substractScreensCount();
             Thread.sleep(this.time);
             Manager.addPhone();
         } catch (InterruptedException ex) {
