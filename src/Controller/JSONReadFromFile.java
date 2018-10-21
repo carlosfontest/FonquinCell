@@ -1,7 +1,9 @@
 package Controller;
 
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import static java.lang.Integer.parseInt;
+import javax.swing.JOptionPane;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
@@ -31,6 +33,21 @@ public class JSONReadFromFile {
             int initAss = Integer.parseInt((String) jsonObject.get("initAss"));
             int maxAss = Integer.parseInt((String) jsonObject.get("maxAss"));
             
+            if(dayInSeconds <= 0 || 
+                daysBeforeDelivery <= 0 ||
+                screensStorageMax <= 0 ||
+                batteriesStorageMax <= 0 ||
+                cablesStorageMax <= 0 ||
+                screensInitProd < 0 ||
+                cablesInitProd < 0 ||
+                batteriesInitProd < 0 ||
+                cablesMaxProd <= 0 ||
+                screensMaxProd <= 0 ||
+                batteriesMaxProd <= 0 ||
+                initAss < 0 ||
+                maxAss <= 0){
+                throw new Exception("Hay una o más propiedades en config.json que no pueden ser menores o iguales a 0."); 
+            }
             
             Controller controller = new Controller();
             controller.initCompany(dayInSeconds, daysBeforeDelivery, screensStorageMax, batteriesStorageMax, cablesStorageMax, screensInitProd, cablesInitProd, batteriesInitProd, cablesMaxProd, screensMaxProd, batteriesMaxProd, initAss, maxAss);
@@ -38,7 +55,14 @@ public class JSONReadFromFile {
             
             
         } catch (Exception e) {
-            e.printStackTrace();
+            if(e instanceof FileNotFoundException){
+                JOptionPane.showMessageDialog(null, "Archivo config.json no encontrado.");
+            }else if (e instanceof NumberFormatException){
+                JOptionPane.showMessageDialog(null, "El config.json tiene una propiedad que no es un int o está vacía.");
+            }
+            else{
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }
         }
     }
 }
