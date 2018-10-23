@@ -37,7 +37,7 @@ public class JSONReadFromFile {
                 daysBeforeDelivery <= 0 ||
                 screensStorageMax <= 0 ||
                 batteriesStorageMax <= 0 ||
-                cablesStorageMax <= 0 ||
+                cablesStorageMax <= 1 ||
                 screensInitProd < 0 ||
                 cablesInitProd < 0 ||
                 batteriesInitProd < 0 ||
