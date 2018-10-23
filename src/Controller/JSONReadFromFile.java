@@ -49,6 +49,10 @@ public class JSONReadFromFile {
                 throw new Exception("Hay una o más propiedades en config.json que no pueden ser menores o iguales a 0."); 
             }
             
+            if(batteriesInitProd > batteriesMaxProd || screensInitProd > screensMaxProd || cablesInitProd > cablesMaxProd || initAss > maxAss){
+                throw new Exception("Una cantidad inicial no puede ser mayor que una cantidad máxima");
+            }
+            
             Controller controller = new Controller();
             controller.initCompany(dayInSeconds, daysBeforeDelivery, screensStorageMax, batteriesStorageMax, cablesStorageMax, screensInitProd, cablesInitProd, batteriesInitProd, cablesMaxProd, screensMaxProd, batteriesMaxProd, initAss, maxAss);
             
